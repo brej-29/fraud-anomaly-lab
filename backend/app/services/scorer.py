@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import Any, Dict, List
 
 import numpy as np
+import pandas as pd
 
 from ml.ensemble import ScoreEnsemble  # type: ignore[import]
 from ..core.logging import get_logger
@@ -75,7 +76,7 @@ class Scorer:
             raise RuntimeError("Feature columns not found in metadata; cannot build feature vector.")
         return cols
 
-    def _build_feature_matrix(self, rows: List[Dict[str, Any]]) -> np.ndarray:
+    def _build_feature_matrix(self, rows: List[Dict[str, Any]]) -> pd.DataFrame:
         feature_columns = self._get_feature_columns()
         matrix: List[List[float]] = []
         for row in rows:
@@ -85,7 +86,7 @@ class Scorer:
                 missing = str(exc)
                 raise ValueError(f"Missing required feature {missing!r} in payload.") from exc
             matrix.append(values)
-        return np.asarray(matrix, dtype="float32")
+        return pd.DataFrame(matrix, columns=feature_columns, dtype="float32")
 
     def _compute_input_hash(self, features: Dict[str, Any]) -> str:
         feature_columns = self._get_feature_columns()

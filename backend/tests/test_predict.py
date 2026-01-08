@@ -1,9 +1,20 @@
 from fastapi.testclient import TestClient
 
 from backend.app.main import app
+import pytest
+from backend.app.services.model_registry import ModelRegistry
+from backend.app.services.scorer import Scorer
 
 
 client = TestClient(app)
+
+
+@pytest.fixture(autouse=True)
+def isolated_artifacts(tmp_path, monkeypatch):
+    registry = ModelRegistry(artifacts_dir=tmp_path)
+    registry.load_all()
+    monkeypatch.setattr(app.state, "model_registry", registry, raising=False)
+    monkeypatch.setattr(app.state, "scorer", Scorer(registry), raising=False)
 
 
 def _dummy_transaction_payload() -> dict:

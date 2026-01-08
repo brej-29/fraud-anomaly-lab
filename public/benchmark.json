@@ -1,0 +1,3211 @@
+{
+  "schema": 1,
+  "name": "ULB chronological holdout",
+  "source": "https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud",
+  "attribution": "Worldline and Machine Learning Group, Université Libre de Bruxelles. September 2013 European card payments.",
+  "dataset_sha256": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89",
+  "rows": 56962,
+  "fraud": 75,
+  "all_rows": 284807,
+  "all_fraud": 492,
+  "selected": "logistic",
+  "config": {
+    "dataset": "data/raw/creditcard.csv",
+    "seed": 17,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "capacity_percent": 0.5,
+    "logistic": {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "max_iter": 1500,
+      "solver": "lbfgs"
+    },
+    "isolation_forest": {
+      "n_estimators": 150,
+      "max_samples": 4096,
+      "n_jobs": -1
+    },
+    "bootstrap_samples": 1000
+  },
+  "splits": {
+    "train": {
+      "rows": 170882,
+      "fraud": 360,
+      "start": 0.0,
+      "end": 120395.0
+    },
+    "validation": {
+      "rows": 56963,
+      "fraud": 57,
+      "start": 120396.0,
+      "end": 145247.0
+    },
+    "test": {
+      "rows": 56962,
+      "fraud": 75,
+      "start": 145248.0,
+      "end": 172792.0
+    }
+  },
+  "validation_average_precision": {
+    "logistic": 0.7553959512694955,
+    "no_amount": 0.7491223257840349
+  },
+  "strategies": [
+    {
+      "id": "logistic",
+      "name": "Logistic regression",
+      "average_precision": 0.7460804626720288,
+      "roc_auc": 0.9818072084424678,
+      "primary": {
+        "k": 284,
+        "caught": 64,
+        "legitimate": 220,
+        "missed": 11,
+        "precision": 0.22535211267605634,
+        "recall": 0.8533333333333334,
+        "interval": [
+          0.7561502569307123,
+          0.9160836906299664
+        ]
+      },
+      "points": [
+        {
+          "percent": 0.0,
+          "k": 0,
+          "caught": 0,
+          "legitimate": 0,
+          "missed": 75,
+          "precision": null,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 0
+        },
+        {
+          "percent": 0.1,
+          "k": 56,
+          "caught": 52,
+          "legitimate": 4,
+          "missed": 23,
+          "precision": 0.9285714285714286,
+          "recall": 0.6933333333333334,
+          "interval": [
+            0.5816933204791398,
+            0.7861328017710428
+          ],
+          "selectedAmount": 31777.440000000002
+        },
+        {
+          "percent": 0.2,
+          "k": 113,
+          "caught": 60,
+          "legitimate": 53,
+          "missed": 15,
+          "precision": 0.5309734513274337,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 59150.86000000001
+        },
+        {
+          "percent": 0.3,
+          "k": 170,
+          "caught": 63,
+          "legitimate": 107,
+          "missed": 12,
+          "precision": 0.37058823529411766,
+          "recall": 0.84,
+          "interval": [
+            0.7408308420225468,
+            0.9060357867622572
+          ],
+          "selectedAmount": 85249.69999999997
+        },
+        {
+          "percent": 0.4,
+          "k": 227,
+          "caught": 64,
+          "legitimate": 163,
+          "missed": 11,
+          "precision": 0.28193832599118945,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 96362.61999999995
+        },
+        {
+          "percent": 0.5,
+          "k": 284,
+          "caught": 64,
+          "legitimate": 220,
+          "missed": 11,
+          "precision": 0.22535211267605634,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 103103.59999999999
+        },
+        {
+          "percent": 0.6,
+          "k": 341,
+          "caught": 64,
+          "legitimate": 277,
+          "missed": 11,
+          "precision": 0.187683284457478,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 108893.42
+        },
+        {
+          "percent": 0.7,
+          "k": 398,
+          "caught": 64,
+          "legitimate": 334,
+          "missed": 11,
+          "precision": 0.16080402010050251,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 117475.58999999998
+        },
+        {
+          "percent": 0.8,
+          "k": 455,
+          "caught": 64,
+          "legitimate": 391,
+          "missed": 11,
+          "precision": 0.14065934065934066,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 129781.63
+        },
+        {
+          "percent": 0.9,
+          "k": 512,
+          "caught": 65,
+          "legitimate": 447,
+          "missed": 10,
+          "precision": 0.126953125,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 135481.06999999995
+        },
+        {
+          "percent": 1.0,
+          "k": 569,
+          "caught": 65,
+          "legitimate": 504,
+          "missed": 10,
+          "precision": 0.11423550087873462,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 147231.35999999996
+        },
+        {
+          "percent": 1.1,
+          "k": 626,
+          "caught": 65,
+          "legitimate": 561,
+          "missed": 10,
+          "precision": 0.10383386581469649,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 154587.49999999994
+        },
+        {
+          "percent": 1.2,
+          "k": 683,
+          "caught": 65,
+          "legitimate": 618,
+          "missed": 10,
+          "precision": 0.0951683748169839,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 157656.56999999992
+        },
+        {
+          "percent": 1.3,
+          "k": 740,
+          "caught": 66,
+          "legitimate": 674,
+          "missed": 9,
+          "precision": 0.0891891891891892,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 162514.8499999999
+        },
+        {
+          "percent": 1.4,
+          "k": 797,
+          "caught": 66,
+          "legitimate": 731,
+          "missed": 9,
+          "precision": 0.08281053952321205,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 170847.88999999993
+        },
+        {
+          "percent": 1.5,
+          "k": 854,
+          "caught": 66,
+          "legitimate": 788,
+          "missed": 9,
+          "precision": 0.07728337236533958,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 173345.62999999992
+        },
+        {
+          "percent": 1.6,
+          "k": 911,
+          "caught": 66,
+          "legitimate": 845,
+          "missed": 9,
+          "precision": 0.07244785949506037,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 180459.22
+        },
+        {
+          "percent": 1.7,
+          "k": 968,
+          "caught": 66,
+          "legitimate": 902,
+          "missed": 9,
+          "precision": 0.06818181818181818,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 183963.66999999995
+        },
+        {
+          "percent": 1.8,
+          "k": 1025,
+          "caught": 66,
+          "legitimate": 959,
+          "missed": 9,
+          "precision": 0.06439024390243903,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 189961.56
+        },
+        {
+          "percent": 1.9,
+          "k": 1082,
+          "caught": 66,
+          "legitimate": 1016,
+          "missed": 9,
+          "precision": 0.06099815157116451,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 201573.7900000001
+        },
+        {
+          "percent": 2.0,
+          "k": 1139,
+          "caught": 66,
+          "legitimate": 1073,
+          "missed": 9,
+          "precision": 0.05794556628621598,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 208929.8100000002
+        },
+        {
+          "percent": 2.1,
+          "k": 1196,
+          "caught": 66,
+          "legitimate": 1130,
+          "missed": 9,
+          "precision": 0.05518394648829431,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 214302.4100000002
+        },
+        {
+          "percent": 2.2,
+          "k": 1253,
+          "caught": 66,
+          "legitimate": 1187,
+          "missed": 9,
+          "precision": 0.052673583399840386,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 220394.2200000003
+        },
+        {
+          "percent": 2.3,
+          "k": 1310,
+          "caught": 66,
+          "legitimate": 1244,
+          "missed": 9,
+          "precision": 0.050381679389312976,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 228433.24000000025
+        },
+        {
+          "percent": 2.4,
+          "k": 1367,
+          "caught": 67,
+          "legitimate": 1300,
+          "missed": 8,
+          "precision": 0.04901243599122165,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 240450.8300000003
+        },
+        {
+          "percent": 2.5,
+          "k": 1424,
+          "caught": 67,
+          "legitimate": 1357,
+          "missed": 8,
+          "precision": 0.047050561797752806,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 253540.2200000004
+        },
+        {
+          "percent": 2.6,
+          "k": 1481,
+          "caught": 67,
+          "legitimate": 1414,
+          "missed": 8,
+          "precision": 0.04523970290344362,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 257148.99000000037
+        },
+        {
+          "percent": 2.7,
+          "k": 1537,
+          "caught": 67,
+          "legitimate": 1470,
+          "missed": 8,
+          "precision": 0.043591411841249185,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 266477.2100000004
+        },
+        {
+          "percent": 2.8,
+          "k": 1594,
+          "caught": 67,
+          "legitimate": 1527,
+          "missed": 8,
+          "precision": 0.04203262233375157,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 270679.99000000046
+        },
+        {
+          "percent": 2.9,
+          "k": 1651,
+          "caught": 67,
+          "legitimate": 1584,
+          "missed": 8,
+          "precision": 0.04058146577831617,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 275116.04000000044
+        },
+        {
+          "percent": 3.0,
+          "k": 1708,
+          "caught": 67,
+          "legitimate": 1641,
+          "missed": 8,
+          "precision": 0.039227166276346606,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 282249.70000000054
+        },
+        {
+          "percent": 3.1,
+          "k": 1765,
+          "caught": 67,
+          "legitimate": 1698,
+          "missed": 8,
+          "precision": 0.037960339943342775,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 286059.34000000055
+        },
+        {
+          "percent": 3.2,
+          "k": 1822,
+          "caught": 67,
+          "legitimate": 1755,
+          "missed": 8,
+          "precision": 0.03677277716794731,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 293972.1200000006
+        },
+        {
+          "percent": 3.3,
+          "k": 1879,
+          "caught": 67,
+          "legitimate": 1812,
+          "missed": 8,
+          "precision": 0.03565726450239489,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 297683.5800000007
+        },
+        {
+          "percent": 3.4,
+          "k": 1936,
+          "caught": 67,
+          "legitimate": 1869,
+          "missed": 8,
+          "precision": 0.03460743801652893,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 305636.31000000075
+        },
+        {
+          "percent": 3.5,
+          "k": 1993,
+          "caught": 67,
+          "legitimate": 1926,
+          "missed": 8,
+          "precision": 0.03361766181635725,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 315300.40000000066
+        },
+        {
+          "percent": 3.6,
+          "k": 2050,
+          "caught": 67,
+          "legitimate": 1983,
+          "missed": 8,
+          "precision": 0.032682926829268294,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 321097.3500000009
+        },
+        {
+          "percent": 3.7,
+          "k": 2107,
+          "caught": 67,
+          "legitimate": 2040,
+          "missed": 8,
+          "precision": 0.03179876601803512,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 335135.4600000009
+        },
+        {
+          "percent": 3.8,
+          "k": 2164,
+          "caught": 67,
+          "legitimate": 2097,
+          "missed": 8,
+          "precision": 0.030961182994454713,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 344891.220000001
+        },
+        {
+          "percent": 3.9,
+          "k": 2221,
+          "caught": 67,
+          "legitimate": 2154,
+          "missed": 8,
+          "precision": 0.030166591625393965,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 348371.9500000012
+        },
+        {
+          "percent": 4.0,
+          "k": 2278,
+          "caught": 67,
+          "legitimate": 2211,
+          "missed": 8,
+          "precision": 0.029411764705882353,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 351479.830000001
+        },
+        {
+          "percent": 4.1,
+          "k": 2335,
+          "caught": 67,
+          "legitimate": 2268,
+          "missed": 8,
+          "precision": 0.028693790149892935,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 355113.340000001
+        },
+        {
+          "percent": 4.2,
+          "k": 2392,
+          "caught": 67,
+          "legitimate": 2325,
+          "missed": 8,
+          "precision": 0.028010033444816052,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 362564.4400000012
+        },
+        {
+          "percent": 4.3,
+          "k": 2449,
+          "caught": 68,
+          "legitimate": 2381,
+          "missed": 7,
+          "precision": 0.027766435279706004,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 369565.74000000133
+        },
+        {
+          "percent": 4.4,
+          "k": 2506,
+          "caught": 68,
+          "legitimate": 2438,
+          "missed": 7,
+          "precision": 0.02713487629688747,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 379551.4900000013
+        },
+        {
+          "percent": 4.5,
+          "k": 2563,
+          "caught": 68,
+          "legitimate": 2495,
+          "missed": 7,
+          "precision": 0.026531408505657432,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 386503.2100000012
+        },
+        {
+          "percent": 4.6,
+          "k": 2620,
+          "caught": 68,
+          "legitimate": 2552,
+          "missed": 7,
+          "precision": 0.025954198473282442,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 390871.84000000136
+        },
+        {
+          "percent": 4.7,
+          "k": 2677,
+          "caught": 68,
+          "legitimate": 2609,
+          "missed": 7,
+          "precision": 0.02540156892043332,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 395920.9600000015
+        },
+        {
+          "percent": 4.8,
+          "k": 2734,
+          "caught": 68,
+          "legitimate": 2666,
+          "missed": 7,
+          "precision": 0.02487198244330651,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 401767.7200000015
+        },
+        {
+          "percent": 4.9,
+          "k": 2791,
+          "caught": 68,
+          "legitimate": 2723,
+          "missed": 7,
+          "precision": 0.024364027230383375,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 407460.0600000016
+        },
+        {
+          "percent": 5.0,
+          "k": 2848,
+          "caught": 68,
+          "legitimate": 2780,
+          "missed": 7,
+          "precision": 0.023876404494382022,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 412132.4900000015
+        }
+      ]
+    },
+    {
+      "id": "no_amount",
+      "name": "Logistic · no amount",
+      "average_precision": 0.7450944412619491,
+      "roc_auc": 0.9817368936077956,
+      "primary": {
+        "k": 284,
+        "caught": 64,
+        "legitimate": 220,
+        "missed": 11,
+        "precision": 0.22535211267605634,
+        "recall": 0.8533333333333334,
+        "interval": [
+          0.7561502569307123,
+          0.9160836906299664
+        ]
+      },
+      "points": [
+        {
+          "percent": 0.0,
+          "k": 0,
+          "caught": 0,
+          "legitimate": 0,
+          "missed": 75,
+          "precision": null,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 0
+        },
+        {
+          "percent": 0.1,
+          "k": 56,
+          "caught": 52,
+          "legitimate": 4,
+          "missed": 23,
+          "precision": 0.9285714285714286,
+          "recall": 0.6933333333333334,
+          "interval": [
+            0.5816933204791398,
+            0.7861328017710428
+          ],
+          "selectedAmount": 35027.75
+        },
+        {
+          "percent": 0.2,
+          "k": 113,
+          "caught": 60,
+          "legitimate": 53,
+          "missed": 15,
+          "precision": 0.5309734513274337,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 61627.31999999997
+        },
+        {
+          "percent": 0.3,
+          "k": 170,
+          "caught": 63,
+          "legitimate": 107,
+          "missed": 12,
+          "precision": 0.37058823529411766,
+          "recall": 0.84,
+          "interval": [
+            0.7408308420225468,
+            0.9060357867622572
+          ],
+          "selectedAmount": 85280.45999999992
+        },
+        {
+          "percent": 0.4,
+          "k": 227,
+          "caught": 64,
+          "legitimate": 163,
+          "missed": 11,
+          "precision": 0.28193832599118945,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 96441.7199999999
+        },
+        {
+          "percent": 0.5,
+          "k": 284,
+          "caught": 64,
+          "legitimate": 220,
+          "missed": 11,
+          "precision": 0.22535211267605634,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 112640.45999999995
+        },
+        {
+          "percent": 0.6,
+          "k": 341,
+          "caught": 64,
+          "legitimate": 277,
+          "missed": 11,
+          "precision": 0.187683284457478,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 115099.24999999996
+        },
+        {
+          "percent": 0.7,
+          "k": 398,
+          "caught": 64,
+          "legitimate": 334,
+          "missed": 11,
+          "precision": 0.16080402010050251,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 123163.65999999993
+        },
+        {
+          "percent": 0.8,
+          "k": 455,
+          "caught": 64,
+          "legitimate": 391,
+          "missed": 11,
+          "precision": 0.14065934065934066,
+          "recall": 0.8533333333333334,
+          "interval": [
+            0.7561502569307123,
+            0.9160836906299664
+          ],
+          "selectedAmount": 136249.11999999994
+        },
+        {
+          "percent": 0.9,
+          "k": 512,
+          "caught": 65,
+          "legitimate": 447,
+          "missed": 10,
+          "precision": 0.126953125,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 145683.70999999993
+        },
+        {
+          "percent": 1.0,
+          "k": 569,
+          "caught": 65,
+          "legitimate": 504,
+          "missed": 10,
+          "precision": 0.11423550087873462,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 156851.9899999999
+        },
+        {
+          "percent": 1.1,
+          "k": 626,
+          "caught": 65,
+          "legitimate": 561,
+          "missed": 10,
+          "precision": 0.10383386581469649,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 169098.5099999999
+        },
+        {
+          "percent": 1.2,
+          "k": 683,
+          "caught": 65,
+          "legitimate": 618,
+          "missed": 10,
+          "precision": 0.0951683748169839,
+          "recall": 0.8666666666666667,
+          "interval": [
+            0.7716663173307007,
+            0.9259349490058527
+          ],
+          "selectedAmount": 173188.5099999999
+        },
+        {
+          "percent": 1.3,
+          "k": 740,
+          "caught": 66,
+          "legitimate": 674,
+          "missed": 9,
+          "precision": 0.0891891891891892,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 179732.6899999999
+        },
+        {
+          "percent": 1.4,
+          "k": 797,
+          "caught": 66,
+          "legitimate": 731,
+          "missed": 9,
+          "precision": 0.08281053952321205,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 183811.56999999992
+        },
+        {
+          "percent": 1.5,
+          "k": 854,
+          "caught": 66,
+          "legitimate": 788,
+          "missed": 9,
+          "precision": 0.07728337236533958,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 187300.01
+        },
+        {
+          "percent": 1.6,
+          "k": 911,
+          "caught": 66,
+          "legitimate": 845,
+          "missed": 9,
+          "precision": 0.07244785949506037,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 190819.3699999999
+        },
+        {
+          "percent": 1.7,
+          "k": 968,
+          "caught": 66,
+          "legitimate": 902,
+          "missed": 9,
+          "precision": 0.06818181818181818,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 203739.25999999998
+        },
+        {
+          "percent": 1.8,
+          "k": 1025,
+          "caught": 66,
+          "legitimate": 959,
+          "missed": 9,
+          "precision": 0.06439024390243903,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 210408.36000000007
+        },
+        {
+          "percent": 1.9,
+          "k": 1082,
+          "caught": 66,
+          "legitimate": 1016,
+          "missed": 9,
+          "precision": 0.06099815157116451,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 214663.84000000014
+        },
+        {
+          "percent": 2.0,
+          "k": 1139,
+          "caught": 66,
+          "legitimate": 1073,
+          "missed": 9,
+          "precision": 0.05794556628621598,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 222437.8700000001
+        },
+        {
+          "percent": 2.1,
+          "k": 1196,
+          "caught": 66,
+          "legitimate": 1130,
+          "missed": 9,
+          "precision": 0.05518394648829431,
+          "recall": 0.88,
+          "interval": [
+            0.7874015748031495,
+            0.9355670103092784
+          ],
+          "selectedAmount": 235217.84000000032
+        },
+        {
+          "percent": 2.2,
+          "k": 1253,
+          "caught": 67,
+          "legitimate": 1186,
+          "missed": 8,
+          "precision": 0.053471667996807665,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 242810.1400000003
+        },
+        {
+          "percent": 2.3,
+          "k": 1310,
+          "caught": 67,
+          "legitimate": 1243,
+          "missed": 8,
+          "precision": 0.05114503816793893,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 248951.75000000038
+        },
+        {
+          "percent": 2.4,
+          "k": 1367,
+          "caught": 67,
+          "legitimate": 1300,
+          "missed": 8,
+          "precision": 0.04901243599122165,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 264919.7400000004
+        },
+        {
+          "percent": 2.5,
+          "k": 1424,
+          "caught": 67,
+          "legitimate": 1357,
+          "missed": 8,
+          "precision": 0.047050561797752806,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 271250.4300000005
+        },
+        {
+          "percent": 2.6,
+          "k": 1481,
+          "caught": 67,
+          "legitimate": 1414,
+          "missed": 8,
+          "precision": 0.04523970290344362,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 278664.35000000073
+        },
+        {
+          "percent": 2.7,
+          "k": 1537,
+          "caught": 67,
+          "legitimate": 1470,
+          "missed": 8,
+          "precision": 0.043591411841249185,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 283139.41000000085
+        },
+        {
+          "percent": 2.8,
+          "k": 1594,
+          "caught": 67,
+          "legitimate": 1527,
+          "missed": 8,
+          "precision": 0.04203262233375157,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 290215.970000001
+        },
+        {
+          "percent": 2.9,
+          "k": 1651,
+          "caught": 67,
+          "legitimate": 1584,
+          "missed": 8,
+          "precision": 0.04058146577831617,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 295809.830000001
+        },
+        {
+          "percent": 3.0,
+          "k": 1708,
+          "caught": 67,
+          "legitimate": 1641,
+          "missed": 8,
+          "precision": 0.039227166276346606,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 299926.1100000012
+        },
+        {
+          "percent": 3.1,
+          "k": 1765,
+          "caught": 67,
+          "legitimate": 1698,
+          "missed": 8,
+          "precision": 0.037960339943342775,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 302511.1600000014
+        },
+        {
+          "percent": 3.2,
+          "k": 1822,
+          "caught": 67,
+          "legitimate": 1755,
+          "missed": 8,
+          "precision": 0.03677277716794731,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 312512.5200000013
+        },
+        {
+          "percent": 3.3,
+          "k": 1879,
+          "caught": 67,
+          "legitimate": 1812,
+          "missed": 8,
+          "precision": 0.03565726450239489,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 319336.2700000012
+        },
+        {
+          "percent": 3.4,
+          "k": 1936,
+          "caught": 67,
+          "legitimate": 1869,
+          "missed": 8,
+          "precision": 0.03460743801652893,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 324883.7900000011
+        },
+        {
+          "percent": 3.5,
+          "k": 1993,
+          "caught": 67,
+          "legitimate": 1926,
+          "missed": 8,
+          "precision": 0.03361766181635725,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 329466.8100000012
+        },
+        {
+          "percent": 3.6,
+          "k": 2050,
+          "caught": 67,
+          "legitimate": 1983,
+          "missed": 8,
+          "precision": 0.032682926829268294,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 339177.2600000014
+        },
+        {
+          "percent": 3.7,
+          "k": 2107,
+          "caught": 67,
+          "legitimate": 2040,
+          "missed": 8,
+          "precision": 0.03179876601803512,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 343633.0000000015
+        },
+        {
+          "percent": 3.8,
+          "k": 2164,
+          "caught": 67,
+          "legitimate": 2097,
+          "missed": 8,
+          "precision": 0.030961182994454713,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 348003.7700000016
+        },
+        {
+          "percent": 3.9,
+          "k": 2221,
+          "caught": 67,
+          "legitimate": 2154,
+          "missed": 8,
+          "precision": 0.030166591625393965,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 353170.4700000016
+        },
+        {
+          "percent": 4.0,
+          "k": 2278,
+          "caught": 67,
+          "legitimate": 2211,
+          "missed": 8,
+          "precision": 0.029411764705882353,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 358125.0000000017
+        },
+        {
+          "percent": 4.1,
+          "k": 2335,
+          "caught": 67,
+          "legitimate": 2268,
+          "missed": 8,
+          "precision": 0.028693790149892935,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 361520.6700000018
+        },
+        {
+          "percent": 4.2,
+          "k": 2392,
+          "caught": 67,
+          "legitimate": 2325,
+          "missed": 8,
+          "precision": 0.028010033444816052,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 366100.77000000176
+        },
+        {
+          "percent": 4.3,
+          "k": 2449,
+          "caught": 67,
+          "legitimate": 2382,
+          "missed": 8,
+          "precision": 0.02735810534912209,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 375457.9000000018
+        },
+        {
+          "percent": 4.4,
+          "k": 2506,
+          "caught": 67,
+          "legitimate": 2439,
+          "missed": 8,
+          "precision": 0.026735833998403832,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 390090.47000000195
+        },
+        {
+          "percent": 4.5,
+          "k": 2563,
+          "caught": 67,
+          "legitimate": 2496,
+          "missed": 8,
+          "precision": 0.02614124073351541,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 395968.09000000195
+        },
+        {
+          "percent": 4.6,
+          "k": 2620,
+          "caught": 67,
+          "legitimate": 2553,
+          "missed": 8,
+          "precision": 0.025572519083969465,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 406863.06000000186
+        },
+        {
+          "percent": 4.7,
+          "k": 2677,
+          "caught": 67,
+          "legitimate": 2610,
+          "missed": 8,
+          "precision": 0.0250280164363093,
+          "recall": 0.8933333333333333,
+          "interval": [
+            0.8033843735268642,
+            0.9449515303614384
+          ],
+          "selectedAmount": 413762.21000000194
+        },
+        {
+          "percent": 4.8,
+          "k": 2734,
+          "caught": 68,
+          "legitimate": 2666,
+          "missed": 7,
+          "precision": 0.02487198244330651,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 419698.09000000206
+        },
+        {
+          "percent": 4.9,
+          "k": 2791,
+          "caught": 68,
+          "legitimate": 2723,
+          "missed": 7,
+          "precision": 0.024364027230383375,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 425215.82000000204
+        },
+        {
+          "percent": 5.0,
+          "k": 2848,
+          "caught": 68,
+          "legitimate": 2780,
+          "missed": 7,
+          "precision": 0.023876404494382022,
+          "recall": 0.9066666666666666,
+          "interval": [
+            0.819651161993122,
+            0.9540520606710551
+          ],
+          "selectedAmount": 429632.34000000206
+        }
+      ]
+    },
+    {
+      "id": "isolation",
+      "name": "Isolation Forest",
+      "average_precision": 0.07926595963289405,
+      "roc_auc": 0.9519515296406326,
+      "primary": {
+        "k": 284,
+        "caught": 35,
+        "legitimate": 249,
+        "missed": 40,
+        "precision": 0.12323943661971831,
+        "recall": 0.4666666666666667,
+        "interval": [
+          0.35815509458811656,
+          0.5784266084721967
+        ]
+      },
+      "points": [
+        {
+          "percent": 0.0,
+          "k": 0,
+          "caught": 0,
+          "legitimate": 0,
+          "missed": 75,
+          "precision": null,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 0
+        },
+        {
+          "percent": 0.1,
+          "k": 56,
+          "caught": 1,
+          "legitimate": 55,
+          "missed": 74,
+          "precision": 0.017857142857142856,
+          "recall": 0.013333333333333334,
+          "interval": [
+            0.002357490433136912,
+            0.07173537424743781
+          ],
+          "selectedAmount": 139115.38999999996
+        },
+        {
+          "percent": 0.2,
+          "k": 113,
+          "caught": 12,
+          "legitimate": 101,
+          "missed": 63,
+          "precision": 0.10619469026548672,
+          "recall": 0.16,
+          "interval": [
+            0.09396421323774289,
+            0.25916915797745316
+          ],
+          "selectedAmount": 171245.62
+        },
+        {
+          "percent": 0.3,
+          "k": 170,
+          "caught": 23,
+          "legitimate": 147,
+          "missed": 52,
+          "precision": 0.13529411764705881,
+          "recall": 0.30666666666666664,
+          "interval": [
+            0.21386719822895706,
+            0.4183066795208602
+          ],
+          "selectedAmount": 191695.33000000013
+        },
+        {
+          "percent": 0.4,
+          "k": 227,
+          "caught": 30,
+          "legitimate": 197,
+          "missed": 45,
+          "precision": 0.13215859030837004,
+          "recall": 0.4,
+          "interval": [
+            0.29662343078170594,
+            0.5131216783992341
+          ],
+          "selectedAmount": 211351.2400000002
+        },
+        {
+          "percent": 0.5,
+          "k": 284,
+          "caught": 35,
+          "legitimate": 249,
+          "missed": 40,
+          "precision": 0.12323943661971831,
+          "recall": 0.4666666666666667,
+          "interval": [
+            0.35815509458811656,
+            0.5784266084721967
+          ],
+          "selectedAmount": 230861.49000000008
+        },
+        {
+          "percent": 0.6,
+          "k": 341,
+          "caught": 39,
+          "legitimate": 302,
+          "missed": 36,
+          "precision": 0.11436950146627566,
+          "recall": 0.52,
+          "interval": [
+            0.4087401957316927,
+            0.6293107824321194
+          ],
+          "selectedAmount": 253442.06999999995
+        },
+        {
+          "percent": 0.7,
+          "k": 398,
+          "caught": 42,
+          "legitimate": 356,
+          "missed": 33,
+          "precision": 0.10552763819095477,
+          "recall": 0.56,
+          "interval": [
+            0.44746569425928456,
+            0.6666872402321515
+          ],
+          "selectedAmount": 284228.27999999985
+        },
+        {
+          "percent": 0.8,
+          "k": 455,
+          "caught": 43,
+          "legitimate": 412,
+          "missed": 32,
+          "precision": 0.0945054945054945,
+          "recall": 0.5733333333333334,
+          "interval": [
+            0.46052588692688007,
+            0.6789943663404308
+          ],
+          "selectedAmount": 307423.4499999998
+        },
+        {
+          "percent": 0.9,
+          "k": 512,
+          "caught": 43,
+          "legitimate": 469,
+          "missed": 32,
+          "precision": 0.083984375,
+          "recall": 0.5733333333333334,
+          "interval": [
+            0.46052588692688007,
+            0.6789943663404308
+          ],
+          "selectedAmount": 326964.7499999999
+        },
+        {
+          "percent": 1.0,
+          "k": 569,
+          "caught": 44,
+          "legitimate": 525,
+          "missed": 31,
+          "precision": 0.0773286467486819,
+          "recall": 0.5866666666666667,
+          "interval": [
+            0.47366310663468214,
+            0.6912244654085031
+          ],
+          "selectedAmount": 345852.5499999999
+        },
+        {
+          "percent": 1.1,
+          "k": 626,
+          "caught": 47,
+          "legitimate": 579,
+          "missed": 28,
+          "precision": 0.07507987220447285,
+          "recall": 0.6266666666666667,
+          "interval": [
+            0.5135475597239507,
+            0.7274419686468587
+          ],
+          "selectedAmount": 365898.9799999998
+        },
+        {
+          "percent": 1.2,
+          "k": 683,
+          "caught": 47,
+          "legitimate": 636,
+          "missed": 28,
+          "precision": 0.06881405563689605,
+          "recall": 0.6266666666666667,
+          "interval": [
+            0.5135475597239507,
+            0.7274419686468587
+          ],
+          "selectedAmount": 384165.78999999975
+        },
+        {
+          "percent": 1.3,
+          "k": 740,
+          "caught": 47,
+          "legitimate": 693,
+          "missed": 28,
+          "precision": 0.06351351351351352,
+          "recall": 0.6266666666666667,
+          "interval": [
+            0.5135475597239507,
+            0.7274419686468587
+          ],
+          "selectedAmount": 412651.78999999975
+        },
+        {
+          "percent": 1.4,
+          "k": 797,
+          "caught": 48,
+          "legitimate": 749,
+          "missed": 27,
+          "precision": 0.060225846925972396,
+          "recall": 0.64,
+          "interval": [
+            0.5270045111400723,
+            0.7393523360066117
+          ],
+          "selectedAmount": 440592.92999999964
+        },
+        {
+          "percent": 1.5,
+          "k": 854,
+          "caught": 48,
+          "legitimate": 806,
+          "missed": 27,
+          "precision": 0.05620608899297424,
+          "recall": 0.64,
+          "interval": [
+            0.5270045111400723,
+            0.7393523360066117
+          ],
+          "selectedAmount": 454070.9599999995
+        },
+        {
+          "percent": 1.6,
+          "k": 911,
+          "caught": 50,
+          "legitimate": 861,
+          "missed": 25,
+          "precision": 0.054884742041712405,
+          "recall": 0.6666666666666666,
+          "interval": [
+            0.5541721417516369,
+            0.7629193429467963
+          ],
+          "selectedAmount": 486607.8399999995
+        },
+        {
+          "percent": 1.7,
+          "k": 968,
+          "caught": 51,
+          "legitimate": 917,
+          "missed": 24,
+          "precision": 0.05268595041322314,
+          "recall": 0.68,
+          "interval": [
+            0.5678872410148672,
+            0.7745715624594409
+          ],
+          "selectedAmount": 514202.48999999947
+        },
+        {
+          "percent": 1.8,
+          "k": 1025,
+          "caught": 52,
+          "legitimate": 973,
+          "missed": 23,
+          "precision": 0.050731707317073174,
+          "recall": 0.6933333333333334,
+          "interval": [
+            0.5816933204791398,
+            0.7861328017710428
+          ],
+          "selectedAmount": 543020.0599999995
+        },
+        {
+          "percent": 1.9,
+          "k": 1082,
+          "caught": 54,
+          "legitimate": 1028,
+          "missed": 21,
+          "precision": 0.04990757855822551,
+          "recall": 0.72,
+          "interval": [
+            0.6095909606557163,
+            0.8089697991462156
+          ],
+          "selectedAmount": 571708.3099999992
+        },
+        {
+          "percent": 2.0,
+          "k": 1139,
+          "caught": 57,
+          "legitimate": 1082,
+          "missed": 18,
+          "precision": 0.05004389815627744,
+          "recall": 0.76,
+          "interval": [
+            0.6522102034171385,
+            0.8424525127124175
+          ],
+          "selectedAmount": 589796.7999999993
+        },
+        {
+          "percent": 2.1,
+          "k": 1196,
+          "caught": 57,
+          "legitimate": 1139,
+          "missed": 18,
+          "precision": 0.047658862876254184,
+          "recall": 0.76,
+          "interval": [
+            0.6522102034171385,
+            0.8424525127124175
+          ],
+          "selectedAmount": 611067.4199999995
+        },
+        {
+          "percent": 2.2,
+          "k": 1253,
+          "caught": 58,
+          "legitimate": 1195,
+          "missed": 17,
+          "precision": 0.04628890662410216,
+          "recall": 0.7733333333333333,
+          "interval": [
+            0.6666425143266057,
+            0.8533875205788248
+          ],
+          "selectedAmount": 634061.1099999995
+        },
+        {
+          "percent": 2.3,
+          "k": 1310,
+          "caught": 58,
+          "legitimate": 1252,
+          "missed": 17,
+          "precision": 0.044274809160305344,
+          "recall": 0.7733333333333333,
+          "interval": [
+            0.6666425143266057,
+            0.8533875205788248
+          ],
+          "selectedAmount": 653336.2799999997
+        },
+        {
+          "percent": 2.4,
+          "k": 1367,
+          "caught": 58,
+          "legitimate": 1309,
+          "missed": 17,
+          "precision": 0.04242867593269934,
+          "recall": 0.7733333333333333,
+          "interval": [
+            0.6666425143266057,
+            0.8533875205788248
+          ],
+          "selectedAmount": 666431.8699999996
+        },
+        {
+          "percent": 2.5,
+          "k": 1424,
+          "caught": 58,
+          "legitimate": 1366,
+          "missed": 17,
+          "precision": 0.04073033707865169,
+          "recall": 0.7733333333333333,
+          "interval": [
+            0.6666425143266057,
+            0.8533875205788248
+          ],
+          "selectedAmount": 683739.7799999998
+        },
+        {
+          "percent": 2.6,
+          "k": 1481,
+          "caught": 59,
+          "legitimate": 1422,
+          "missed": 16,
+          "precision": 0.039837947332883185,
+          "recall": 0.7866666666666666,
+          "interval": [
+            0.6811982171013853,
+            0.86419913657992
+          ],
+          "selectedAmount": 696064.1899999995
+        },
+        {
+          "percent": 2.7,
+          "k": 1537,
+          "caught": 60,
+          "legitimate": 1477,
+          "missed": 15,
+          "precision": 0.03903708523096942,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 712454.2399999995
+        },
+        {
+          "percent": 2.8,
+          "k": 1594,
+          "caught": 60,
+          "legitimate": 1534,
+          "missed": 15,
+          "precision": 0.037641154328732745,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 734262.6499999997
+        },
+        {
+          "percent": 2.9,
+          "k": 1651,
+          "caught": 60,
+          "legitimate": 1591,
+          "missed": 15,
+          "precision": 0.03634161114476075,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 755440.0899999994
+        },
+        {
+          "percent": 3.0,
+          "k": 1708,
+          "caught": 60,
+          "legitimate": 1648,
+          "missed": 15,
+          "precision": 0.0351288056206089,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 772957.0099999994
+        },
+        {
+          "percent": 3.1,
+          "k": 1765,
+          "caught": 60,
+          "legitimate": 1705,
+          "missed": 15,
+          "precision": 0.0339943342776204,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 789425.5799999994
+        },
+        {
+          "percent": 3.2,
+          "k": 1822,
+          "caught": 60,
+          "legitimate": 1762,
+          "missed": 15,
+          "precision": 0.03293084522502744,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 808056.3799999994
+        },
+        {
+          "percent": 3.3,
+          "k": 1879,
+          "caught": 60,
+          "legitimate": 1819,
+          "missed": 15,
+          "precision": 0.031931878658861094,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 827806.3199999994
+        },
+        {
+          "percent": 3.4,
+          "k": 1936,
+          "caught": 60,
+          "legitimate": 1876,
+          "missed": 15,
+          "precision": 0.030991735537190084,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 845095.819999999
+        },
+        {
+          "percent": 3.5,
+          "k": 1993,
+          "caught": 60,
+          "legitimate": 1933,
+          "missed": 15,
+          "precision": 0.030105368790767688,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 859117.4999999988
+        },
+        {
+          "percent": 3.6,
+          "k": 2050,
+          "caught": 60,
+          "legitimate": 1990,
+          "missed": 15,
+          "precision": 0.02926829268292683,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 881936.9699999985
+        },
+        {
+          "percent": 3.7,
+          "k": 2107,
+          "caught": 60,
+          "legitimate": 2047,
+          "missed": 15,
+          "precision": 0.028476506881822496,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 900069.0899999983
+        },
+        {
+          "percent": 3.8,
+          "k": 2164,
+          "caught": 60,
+          "legitimate": 2104,
+          "missed": 15,
+          "precision": 0.027726432532347505,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 918431.6799999978
+        },
+        {
+          "percent": 3.9,
+          "k": 2221,
+          "caught": 60,
+          "legitimate": 2161,
+          "missed": 15,
+          "precision": 0.0270148581719946,
+          "recall": 0.8,
+          "interval": [
+            0.6958850544883829,
+            0.8748796179687971
+          ],
+          "selectedAmount": 925536.349999998
+        },
+        {
+          "percent": 4.0,
+          "k": 2278,
+          "caught": 61,
+          "legitimate": 2217,
+          "missed": 14,
+          "precision": 0.026777875329236173,
+          "recall": 0.8133333333333334,
+          "interval": [
+            0.7107120474561753,
+            0.8854199437768794
+          ],
+          "selectedAmount": 940206.0899999982
+        },
+        {
+          "percent": 4.1,
+          "k": 2335,
+          "caught": 61,
+          "legitimate": 2274,
+          "missed": 14,
+          "precision": 0.026124197002141327,
+          "recall": 0.8133333333333334,
+          "interval": [
+            0.7107120474561753,
+            0.8854199437768794
+          ],
+          "selectedAmount": 958291.9599999982
+        },
+        {
+          "percent": 4.2,
+          "k": 2392,
+          "caught": 62,
+          "legitimate": 2330,
+          "missed": 13,
+          "precision": 0.025919732441471572,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 966579.4699999982
+        },
+        {
+          "percent": 4.3,
+          "k": 2449,
+          "caught": 62,
+          "legitimate": 2387,
+          "missed": 13,
+          "precision": 0.02531645569620253,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 981548.9899999984
+        },
+        {
+          "percent": 4.4,
+          "k": 2506,
+          "caught": 62,
+          "legitimate": 2444,
+          "missed": 13,
+          "precision": 0.024740622505985636,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 997037.2199999986
+        },
+        {
+          "percent": 4.5,
+          "k": 2563,
+          "caught": 62,
+          "legitimate": 2501,
+          "missed": 13,
+          "precision": 0.024190401872805307,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 1012304.2899999986
+        },
+        {
+          "percent": 4.6,
+          "k": 2620,
+          "caught": 62,
+          "legitimate": 2558,
+          "missed": 13,
+          "precision": 0.02366412213740458,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 1027663.4699999985
+        },
+        {
+          "percent": 4.7,
+          "k": 2677,
+          "caught": 62,
+          "legitimate": 2615,
+          "missed": 13,
+          "precision": 0.023160254015689205,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 1039805.5999999986
+        },
+        {
+          "percent": 4.8,
+          "k": 2734,
+          "caught": 62,
+          "legitimate": 2672,
+          "missed": 13,
+          "precision": 0.02267739575713241,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 1052742.5899999985
+        },
+        {
+          "percent": 4.9,
+          "k": 2791,
+          "caught": 62,
+          "legitimate": 2729,
+          "missed": 13,
+          "precision": 0.022214260121820137,
+          "recall": 0.8266666666666667,
+          "interval": [
+            0.7256897902417947,
+            0.8958095197671345
+          ],
+          "selectedAmount": 1064796.5699999982
+        },
+        {
+          "percent": 5.0,
+          "k": 2848,
+          "caught": 63,
+          "legitimate": 2785,
+          "missed": 12,
+          "precision": 0.02212078651685393,
+          "recall": 0.84,
+          "interval": [
+            0.7408308420225468,
+            0.9060357867622572
+          ],
+          "selectedAmount": 1078486.8799999973
+        }
+      ]
+    },
+    {
+      "id": "amount",
+      "name": "Largest amount first",
+      "average_precision": 0.0014479842074899473,
+      "roc_auc": 0.38202881736307653,
+      "primary": {
+        "k": 284,
+        "caught": 1,
+        "legitimate": 283,
+        "missed": 74,
+        "precision": 0.0035211267605633804,
+        "recall": 0.013333333333333334,
+        "interval": [
+          0.002357490433136912,
+          0.07173537424743781
+        ]
+      },
+      "points": [
+        {
+          "percent": 0.0,
+          "k": 0,
+          "caught": 0,
+          "legitimate": 0,
+          "missed": 75,
+          "precision": null,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 0
+        },
+        {
+          "percent": 0.1,
+          "k": 56,
+          "caught": 0,
+          "legitimate": 56,
+          "missed": 75,
+          "precision": 0.0,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 249775.42999999996
+        },
+        {
+          "percent": 0.2,
+          "k": 113,
+          "caught": 0,
+          "legitimate": 113,
+          "missed": 75,
+          "precision": 0.0,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 379610.9900000001
+        },
+        {
+          "percent": 0.3,
+          "k": 170,
+          "caught": 0,
+          "legitimate": 170,
+          "missed": 75,
+          "precision": 0.0,
+          "recall": 0.0,
+          "interval": [
+            0.0,
+            0.04872554590470005
+          ],
+          "selectedAmount": 484217.17000000033
+        },
+        {
+          "percent": 0.4,
+          "k": 227,
+          "caught": 1,
+          "legitimate": 226,
+          "missed": 74,
+          "precision": 0.004405286343612335,
+          "recall": 0.013333333333333334,
+          "interval": [
+            0.002357490433136912,
+            0.07173537424743781
+          ],
+          "selectedAmount": 574276.8400000007
+        },
+        {
+          "percent": 0.5,
+          "k": 284,
+          "caught": 1,
+          "legitimate": 283,
+          "missed": 74,
+          "precision": 0.0035211267605633804,
+          "recall": 0.013333333333333334,
+          "interval": [
+            0.002357490433136912,
+            0.07173537424743781
+          ],
+          "selectedAmount": 654142.440000001
+        },
+        {
+          "percent": 0.6,
+          "k": 341,
+          "caught": 1,
+          "legitimate": 340,
+          "missed": 74,
+          "precision": 0.002932551319648094,
+          "recall": 0.013333333333333334,
+          "interval": [
+            0.002357490433136912,
+            0.07173537424743781
+          ],
+          "selectedAmount": 726216.4600000009
+        },
+        {
+          "percent": 0.7,
+          "k": 398,
+          "caught": 1,
+          "legitimate": 397,
+          "missed": 74,
+          "precision": 0.002512562814070352,
+          "recall": 0.013333333333333334,
+          "interval": [
+            0.002357490433136912,
+            0.07173537424743781
+          ],
+          "selectedAmount": 793755.7700000011
+        },
+        {
+          "percent": 0.8,
+          "k": 455,
+          "caught": 2,
+          "legitimate": 453,
+          "missed": 73,
+          "precision": 0.004395604395604396,
+          "recall": 0.02666666666666667,
+          "interval": [
+            0.00734353502360055,
+            0.09211664843284882
+          ],
+          "selectedAmount": 857055.8900000012
+        },
+        {
+          "percent": 0.9,
+          "k": 512,
+          "caught": 2,
+          "legitimate": 510,
+          "missed": 73,
+          "precision": 0.00390625,
+          "recall": 0.02666666666666667,
+          "interval": [
+            0.00734353502360055,
+            0.09211664843284882
+          ],
+          "selectedAmount": 915458.7000000014
+        },
+        {
+          "percent": 1.0,
+          "k": 569,
+          "caught": 3,
+          "legitimate": 566,
+          "missed": 72,
+          "precision": 0.005272407732864675,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 971970.0900000011
+        },
+        {
+          "percent": 1.1,
+          "k": 626,
+          "caught": 3,
+          "legitimate": 623,
+          "missed": 72,
+          "precision": 0.004792332268370607,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1025797.8900000011
+        },
+        {
+          "percent": 1.2,
+          "k": 683,
+          "caught": 3,
+          "legitimate": 680,
+          "missed": 72,
+          "precision": 0.004392386530014641,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1076579.0300000012
+        },
+        {
+          "percent": 1.3,
+          "k": 740,
+          "caught": 3,
+          "legitimate": 737,
+          "missed": 72,
+          "precision": 0.004054054054054054,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1124419.7400000014
+        },
+        {
+          "percent": 1.4,
+          "k": 797,
+          "caught": 3,
+          "legitimate": 794,
+          "missed": 72,
+          "precision": 0.0037641154328732747,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1170427.4400000004
+        },
+        {
+          "percent": 1.5,
+          "k": 854,
+          "caught": 3,
+          "legitimate": 851,
+          "missed": 72,
+          "precision": 0.00351288056206089,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1214799.9300000002
+        },
+        {
+          "percent": 1.6,
+          "k": 911,
+          "caught": 3,
+          "legitimate": 908,
+          "missed": 72,
+          "precision": 0.003293084522502744,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1257273.35
+        },
+        {
+          "percent": 1.7,
+          "k": 968,
+          "caught": 3,
+          "legitimate": 965,
+          "missed": 72,
+          "precision": 0.0030991735537190084,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1297976.16
+        },
+        {
+          "percent": 1.8,
+          "k": 1025,
+          "caught": 3,
+          "legitimate": 1022,
+          "missed": 72,
+          "precision": 0.002926829268292683,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1337051.4999999998
+        },
+        {
+          "percent": 1.9,
+          "k": 1082,
+          "caught": 3,
+          "legitimate": 1079,
+          "missed": 72,
+          "precision": 0.0027726432532347504,
+          "recall": 0.04,
+          "interval": [
+            0.013695816001486477,
+            0.11113168623083756
+          ],
+          "selectedAmount": 1374349.2599999998
+        },
+        {
+          "percent": 2.0,
+          "k": 1139,
+          "caught": 4,
+          "legitimate": 1135,
+          "missed": 71,
+          "precision": 0.003511852502194908,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1410393.0200000003
+        },
+        {
+          "percent": 2.1,
+          "k": 1196,
+          "caught": 4,
+          "legitimate": 1192,
+          "missed": 71,
+          "precision": 0.0033444816053511705,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1445364.4500000007
+        },
+        {
+          "percent": 2.2,
+          "k": 1253,
+          "caught": 4,
+          "legitimate": 1249,
+          "missed": 71,
+          "precision": 0.0031923383878691143,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1479333.060000001
+        },
+        {
+          "percent": 2.3,
+          "k": 1310,
+          "caught": 4,
+          "legitimate": 1306,
+          "missed": 71,
+          "precision": 0.0030534351145038168,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1512281.0100000014
+        },
+        {
+          "percent": 2.4,
+          "k": 1367,
+          "caught": 4,
+          "legitimate": 1363,
+          "missed": 71,
+          "precision": 0.002926115581565472,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1544012.350000001
+        },
+        {
+          "percent": 2.5,
+          "k": 1424,
+          "caught": 4,
+          "legitimate": 1420,
+          "missed": 71,
+          "precision": 0.0028089887640449437,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1574886.9900000007
+        },
+        {
+          "percent": 2.6,
+          "k": 1481,
+          "caught": 4,
+          "legitimate": 1477,
+          "missed": 71,
+          "precision": 0.0027008777852802163,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1604916.550000001
+        },
+        {
+          "percent": 2.7,
+          "k": 1537,
+          "caught": 4,
+          "legitimate": 1533,
+          "missed": 71,
+          "precision": 0.002602472348731295,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1633663.55
+        },
+        {
+          "percent": 2.8,
+          "k": 1594,
+          "caught": 4,
+          "legitimate": 1590,
+          "missed": 71,
+          "precision": 0.002509410288582183,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1662205.05
+        },
+        {
+          "percent": 2.9,
+          "k": 1651,
+          "caught": 4,
+          "legitimate": 1647,
+          "missed": 71,
+          "precision": 0.0024227740763173833,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1690510.2299999997
+        },
+        {
+          "percent": 3.0,
+          "k": 1708,
+          "caught": 4,
+          "legitimate": 1704,
+          "missed": 71,
+          "precision": 0.00234192037470726,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1718092.0900000003
+        },
+        {
+          "percent": 3.1,
+          "k": 1765,
+          "caught": 4,
+          "legitimate": 1761,
+          "missed": 71,
+          "precision": 0.0022662889518413596,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1745082.0500000007
+        },
+        {
+          "percent": 3.2,
+          "k": 1822,
+          "caught": 4,
+          "legitimate": 1818,
+          "missed": 71,
+          "precision": 0.0021953896816684962,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1771358.8000000005
+        },
+        {
+          "percent": 3.3,
+          "k": 1879,
+          "caught": 4,
+          "legitimate": 1875,
+          "missed": 71,
+          "precision": 0.0021287919105907396,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1797074.2900000007
+        },
+        {
+          "percent": 3.4,
+          "k": 1936,
+          "caught": 4,
+          "legitimate": 1932,
+          "missed": 71,
+          "precision": 0.002066115702479339,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1822301.0900000008
+        },
+        {
+          "percent": 3.5,
+          "k": 1993,
+          "caught": 4,
+          "legitimate": 1989,
+          "missed": 71,
+          "precision": 0.002007024586051179,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1846845.9900000005
+        },
+        {
+          "percent": 3.6,
+          "k": 2050,
+          "caught": 4,
+          "legitimate": 2046,
+          "missed": 71,
+          "precision": 0.001951219512195122,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1870814.23
+        },
+        {
+          "percent": 3.7,
+          "k": 2107,
+          "caught": 4,
+          "legitimate": 2103,
+          "missed": 71,
+          "precision": 0.0018984337921214998,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1894354.1300000001
+        },
+        {
+          "percent": 3.8,
+          "k": 2164,
+          "caught": 4,
+          "legitimate": 2160,
+          "missed": 71,
+          "precision": 0.0018484288354898336,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1917354.7100000002
+        },
+        {
+          "percent": 3.9,
+          "k": 2221,
+          "caught": 4,
+          "legitimate": 2217,
+          "missed": 71,
+          "precision": 0.0018009905447996398,
+          "recall": 0.05333333333333334,
+          "interval": [
+            0.020933088960043124,
+            0.1292617320481556
+          ],
+          "selectedAmount": 1940110.78
+        },
+        {
+          "percent": 4.0,
+          "k": 2278,
+          "caught": 5,
+          "legitimate": 2273,
+          "missed": 70,
+          "precision": 0.0021949078138718174,
+          "recall": 0.06666666666666667,
+          "interval": [
+            0.028809638090317204,
+            0.14675250169375617
+          ],
+          "selectedAmount": 1962538.5699999991
+        },
+        {
+          "percent": 4.1,
+          "k": 2335,
+          "caught": 5,
+          "legitimate": 2330,
+          "missed": 70,
+          "precision": 0.0021413276231263384,
+          "recall": 0.06666666666666667,
+          "interval": [
+            0.028809638090317204,
+            0.14675250169375617
+          ],
+          "selectedAmount": 1984501.0499999998
+        },
+        {
+          "percent": 4.2,
+          "k": 2392,
+          "caught": 5,
+          "legitimate": 2387,
+          "missed": 70,
+          "precision": 0.0020903010033444815,
+          "recall": 0.06666666666666667,
+          "interval": [
+            0.028809638090317204,
+            0.14675250169375617
+          ],
+          "selectedAmount": 2006053.2499999995
+        },
+        {
+          "percent": 4.3,
+          "k": 2449,
+          "caught": 5,
+          "legitimate": 2444,
+          "missed": 70,
+          "precision": 0.002041649652919559,
+          "recall": 0.06666666666666667,
+          "interval": [
+            0.028809638090317204,
+            0.14675250169375617
+          ],
+          "selectedAmount": 2027203.929999999
+        },
+        {
+          "percent": 4.4,
+          "k": 2506,
+          "caught": 5,
+          "legitimate": 2501,
+          "missed": 70,
+          "precision": 0.0019952114924181963,
+          "recall": 0.06666666666666667,
+          "interval": [
+            0.028809638090317204,
+            0.14675250169375617
+          ],
+          "selectedAmount": 2047864.1699999985
+        },
+        {
+          "percent": 4.5,
+          "k": 2563,
+          "caught": 6,
+          "legitimate": 2557,
+          "missed": 69,
+          "precision": 0.0023410066328521262,
+          "recall": 0.08,
+          "interval": [
+            0.03717961789436808,
+            0.16374984066557996
+          ],
+          "selectedAmount": 2068247.1999999983
+        },
+        {
+          "percent": 4.6,
+          "k": 2620,
+          "caught": 6,
+          "legitimate": 2614,
+          "missed": 69,
+          "precision": 0.0022900763358778627,
+          "recall": 0.08,
+          "interval": [
+            0.03717961789436808,
+            0.16374984066557996
+          ],
+          "selectedAmount": 2088292.7999999986
+        },
+        {
+          "percent": 4.7,
+          "k": 2677,
+          "caught": 7,
+          "legitimate": 2670,
+          "missed": 68,
+          "precision": 0.002614867388868136,
+          "recall": 0.09333333333333334,
+          "interval": [
+            0.04594793932894482,
+            0.1803488380068779
+          ],
+          "selectedAmount": 2107974.9299999983
+        },
+        {
+          "percent": 4.8,
+          "k": 2734,
+          "caught": 7,
+          "legitimate": 2727,
+          "missed": 68,
+          "precision": 0.002560351133869788,
+          "recall": 0.09333333333333334,
+          "interval": [
+            0.04594793932894482,
+            0.1803488380068779
+          ],
+          "selectedAmount": 2127253.6499999985
+        },
+        {
+          "percent": 4.9,
+          "k": 2791,
+          "caught": 7,
+          "legitimate": 2784,
+          "missed": 68,
+          "precision": 0.0025080616266571123,
+          "recall": 0.09333333333333334,
+          "interval": [
+            0.04594793932894482,
+            0.1803488380068779
+          ],
+          "selectedAmount": 2146226.7999999993
+        },
+        {
+          "percent": 5.0,
+          "k": 2848,
+          "caught": 7,
+          "legitimate": 2841,
+          "missed": 68,
+          "precision": 0.0024578651685393258,
+          "recall": 0.09333333333333334,
+          "interval": [
+            0.04594793932894482,
+            0.1803488380068779
+          ],
+          "selectedAmount": 2164872.5800000005
+        }
+      ]
+    }
+  ],
+  "repeats": [
+    {
+      "model": "logistic",
+      "seed": 17,
+      "average_precision": 0.7460804626720288,
+      "k": 284,
+      "caught": 64,
+      "legitimate": 220,
+      "missed": 11,
+      "precision": 0.22535211267605634,
+      "recall": 0.8533333333333334,
+      "interval": [
+        0.7561502569307123,
+        0.9160836906299664
+      ]
+    },
+    {
+      "model": "no_amount",
+      "seed": 17,
+      "average_precision": 0.7450944412619491,
+      "k": 284,
+      "caught": 64,
+      "legitimate": 220,
+      "missed": 11,
+      "precision": 0.22535211267605634,
+      "recall": 0.8533333333333334,
+      "interval": [
+        0.7561502569307123,
+        0.9160836906299664
+      ]
+    },
+    {
+      "model": "isolation",
+      "seed": 17,
+      "average_precision": 0.07926595963289405,
+      "k": 284,
+      "caught": 35,
+      "legitimate": 249,
+      "missed": 40,
+      "precision": 0.12323943661971831,
+      "recall": 0.4666666666666667,
+      "interval": [
+        0.35815509458811656,
+        0.5784266084721967
+      ]
+    },
+    {
+      "model": "logistic",
+      "seed": 29,
+      "average_precision": 0.7460804626720288,
+      "k": 284,
+      "caught": 64,
+      "legitimate": 220,
+      "missed": 11,
+      "precision": 0.22535211267605634,
+      "recall": 0.8533333333333334,
+      "interval": [
+        0.7561502569307123,
+        0.9160836906299664
+      ]
+    },
+    {
+      "model": "no_amount",
+      "seed": 29,
+      "average_precision": 0.7450944412619491,
+      "k": 284,
+      "caught": 64,
+      "legitimate": 220,
+      "missed": 11,
+      "precision": 0.22535211267605634,
+      "recall": 0.8533333333333334,
+      "interval": [
+        0.7561502569307123,
+        0.9160836906299664
+      ]
+    },
+    {
+      "model": "isolation",
+      "seed": 29,
+      "average_precision": 0.06950220857065502,
+      "k": 284,
+      "caught": 32,
+      "legitimate": 252,
+      "missed": 43,
+      "precision": 0.11267605633802817,
+      "recall": 0.4266666666666667,
+      "interval": [
+        0.32100563365956936,
+        0.53947411307312
+      ]
+    },
+    {
+      "model": "logistic",
+      "seed": 43,
+      "average_precision": 0.7460804626720288,
+      "k": 284,
+      "caught": 64,
+      "legitimate": 220,
+      "missed": 11,
+      "precision": 0.22535211267605634,
+      "recall": 0.8533333333333334,
+      "interval": [
+        0.7561502569307123,
+        0.9160836906299664
+      ]
+    },
+    {
+      "model": "no_amount",
+      "seed": 43,
+      "average_precision": 0.7450944412619491,
+      "k": 284,
+      "caught": 64,
+      "legitimate": 220,
+      "missed": 11,
+      "precision": 0.22535211267605634,
+      "recall": 0.8533333333333334,
+      "interval": [
+        0.7561502569307123,
+        0.9160836906299664
+      ]
+    },
+    {
+      "model": "isolation",
+      "seed": 43,
+      "average_precision": 0.06603668144910144,
+      "k": 284,
+      "caught": 31,
+      "legitimate": 253,
+      "missed": 44,
+      "precision": 0.10915492957746478,
+      "recall": 0.41333333333333333,
+      "interval": [
+        0.30877553459149687,
+        0.5263368933653177
+      ]
+    }
+  ],
+  "random_expected": {
+    "precision": 0.001316667251852112,
+    "recall": 0.004985779993679997,
+    "caught": 0.3739334995259998
+  },
+  "primary_success": true,
+  "recall_difference_interval": [
+    0.26664062499999996,
+    0.48720238095238094
+  ],
+  "error_analysis": [
+    {
+      "segment": "Amount ≤ 25",
+      "rows": 32363,
+      "fraud": 49,
+      "caught": 43,
+      "missed": 6,
+      "recall": 0.8775510204081632
+    },
+    {
+      "segment": "Amount 25–100",
+      "rows": 14705,
+      "fraud": 11,
+      "caught": 10,
+      "missed": 1,
+      "recall": 0.9090909090909091
+    },
+    {
+      "segment": "Amount > 100",
+      "rows": 9894,
+      "fraud": 15,
+      "caught": 11,
+      "missed": 4,
+      "recall": 0.7333333333333333
+    },
+    {
+      "segment": "Earlier test half",
+      "rows": 28481,
+      "fraud": 53,
+      "caught": 47,
+      "missed": 6,
+      "recall": 0.8867924528301887
+    },
+    {
+      "segment": "Later test half",
+      "rows": 28481,
+      "fraud": 22,
+      "caught": 17,
+      "missed": 5,
+      "recall": 0.7727272727272727
+    }
+  ],
+  "duplicate_feature_overlap": {
+    "train_to_val": 561,
+    "train_to_test": 648,
+    "val_to_test": 1469
+  },
+  "novel_test": {
+    "rows": 55240,
+    "k": 276,
+    "caught": 64,
+    "legitimate": 212,
+    "missed": 11,
+    "precision": 0.2318840579710145,
+    "recall": 0.8533333333333334,
+    "interval": [
+      0.7561502569307123,
+      0.9160836906299664
+    ]
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "sklearn": "1.9.1"
+  }
+}
