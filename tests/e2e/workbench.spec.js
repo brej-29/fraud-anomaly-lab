@@ -5,7 +5,7 @@ test('real benchmark budget, evidence, sample import, queue and export work',asy
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('./');
   await expect(page.getByRole('heading',{name:'Make every review count.'})).toBeVisible();
-  await expect(page.getByText('Real historical holdout Â· aggregate results only')).toBeVisible();
+  await expect(page.getByText(/Real historical holdout.*aggregate results only/)).toBeVisible();
   const initial=await page.locator('#metric-k').textContent();
   await page.getByRole('button',{name:'2%',exact:true}).click();
   expect(await page.locator('#metric-k').textContent()).not.toBe(initial);
