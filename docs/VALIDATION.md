@@ -7,7 +7,7 @@
 - Browser core: **7 Node tests pass** (`npm test`), including known confusion counts, stable ties, unknown outcomes, strict CSV rejection, quoting, spreadsheet protection and curve/direct-count agreement at every budget point.
 - Product flow: **12 browser tests pass** (`npm run test:e2e`) across 390×844, 834×1112 and 1440×1000 viewports. Coverage includes historical benchmark, budget changes, private CSVs, synthetic tutorial, amount comparison, keyboard pagination, export, errors and offline calculations in a loaded tab.
 - Four routes at three sizes are scanned for automated WCAG A/AA violations with axe; reduced-motion mode is enabled. This does not replace assistive-technology testing with users.
-- Full offline evaluation rerun reproduced `public/benchmark.json` byte for byte: artifact SHA-256 `579c0363ef0d0107c323081b39860c510851ea5045ac80234ae6af31a0c77cc9`. Input dataset checksum is recorded inside that file.
+- Full offline evaluation rerun reproduced `public/benchmark.json` byte for byte: artifact SHA-256 `fd89d820f123c10f9006d16cff4f9880398a873f61f0ff1a6e4ccd504eb4f816`. Input dataset checksum is recorded inside that file.
 - Dependency audit after updating the initially vulnerable build tools: **zero known npm advisories** at the recorded install. This is time-dependent, not a permanent security certification.
 - Repository lint passes its explicit rules. Attribution and secret-signature scans pass; existing historical coauthor trailers are retained.
 
@@ -38,3 +38,5 @@ Run `node scripts/lighthouse.mjs` with the production preview on port 4173. Set 
 ## Remaining practical limits
 
 The app is tested in Chromium; Safari/Firefox and manual screen-reader testing have not been performed. All file rows are rejected on an invalid value; label maturity and correctness cannot be verified from the CSV alone. A loaded tab can calculate offline, while first load and refresh need hosting access; the site has no service-worker offline reload guarantee. No analyst usability study, prospective fraud trial or recovered-money measurement has been run.
+
+Production verification initially passed all 12 browser tests and the real CSV-download smoke test. Windows-host mobile Lighthouse performance varied across four fresh profiles: 87, 100, 82, 89; the other categories stayed at 100. The full negative record is retained in reports/lighthouse-live-runs.json. Targeted rendering isolation did not establish a reliable app-level improvement, so a separate Linux-runner three-profile audit now gates production quality; each category of each run must reach 90.

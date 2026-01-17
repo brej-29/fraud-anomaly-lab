@@ -1,0 +1,18 @@
+{
+  "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+  "tool": "Lighthouse",
+  "version": "13.6.0",
+  "formFactor": "mobile",
+  "scores": {
+    "performance": 89,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "fcp": 815,
+    "lcp": 1348,
+    "cls": 0.0003723600419506162,
+    "tbt": 457.5
+  }
+}

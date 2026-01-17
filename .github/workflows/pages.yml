@@ -52,3 +52,13 @@ jobs:
       - run: npm run smoke
         env:
           LIVE_URL: https://brej-29.github.io/fraud-anomaly-lab/
+      - name: Verify production quality
+        run: node scripts/quality-audit.mjs
+        env:
+          LIVE_URL: https://brej-29.github.io/fraud-anomaly-lab/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deployed-quality
+          path: reports/lighthouse-live-ci.json
+          retention-days: 7

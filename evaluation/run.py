@@ -131,8 +131,9 @@ def run():
     # Timing is deliberately excluded from deterministic output.
     destination = ROOT/'public/benchmark.json'
     destination.parent.mkdir(exist_ok=True)
-    destination.write_text(json.dumps(report, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
-    (ROOT/'reports/benchmark.json').write_text(json.dumps(report, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
+    encoded = (json.dumps(report, indent=2, ensure_ascii=False)+'\n').encode('utf-8')
+    destination.write_bytes(encoded)
+    (ROOT/'reports/benchmark.json').write_bytes(encoded)
     print(json.dumps(dict(selected=selected, primary=selected_metric, baseline=baseline_metric, success=success, duplicate_overlap=duplicates, seconds=round(time.perf_counter()-start,1)), indent=2))
 
 if __name__ == '__main__':

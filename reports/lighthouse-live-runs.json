@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+    "tool": "Lighthouse",
+    "version": "13.6.0",
+    "formFactor": "mobile",
+    "scores": {
+      "performance": 87,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "fcp": 1042.907,
+      "lcp": 1555.407,
+      "cls": 0,
+      "tbt": 512.5
+    }
+  },
+  {
+    "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+    "tool": "Lighthouse",
+    "version": "13.6.0",
+    "formFactor": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "fcp": 1088,
+      "lcp": 1088,
+      "cls": 0,
+      "tbt": 10
+    }
+  },
+  {
+    "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+    "tool": "Lighthouse",
+    "version": "13.6.0",
+    "formFactor": "mobile",
+    "scores": {
+      "performance": 82,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "fcp": 830,
+      "lcp": 1471.5,
+      "cls": 0,
+      "tbt": 694.5
+    }
+  },
+  {
+    "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+    "tool": "Lighthouse",
+    "version": "13.6.0",
+    "formFactor": "mobile",
+    "scores": {
+      "performance": 89,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "fcp": 815,
+      "lcp": 1348,
+      "cls": 0.0003723600419506162,
+      "tbt": 457.5
+    }
+  }
+]
