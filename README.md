@@ -62,6 +62,8 @@ npm run test:e2e
 
 On Windows use `npm.cmd` and `npx.cmd` if PowerShell blocks their script wrappers. The browser suite covers benchmark → capacity → import → queue → export at 390, 834 and 1440 pixels, malformed input, unknown outcomes, offline use in a loaded tab, fetch recovery and automated WCAG checks. [Validation evidence](docs/VALIDATION.md) records screenshots, performance measurements and review findings.
 
+Production mobile Lighthouse scored **100 in all four categories in each of three fresh Linux CI profiles**. Four Windows-host production runs ranged from 82–100 for performance, with the other categories at 100; those negative measurements are retained. These are lab results, not field guarantees. The [complete Linux record](reports/lighthouse-live-ci.json) and [Windows runs](reports/lighthouse-live-runs.json) make the test environments explicit.
+
 Reproduce the offline experiment with Python 3.11:
 
 ```bash

@@ -1,0 +1,80 @@
+{
+  "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+  "runner": {
+    "platform": "linux",
+    "node": "v24.22.2",
+    "ci": true
+  },
+  "method": "Three fresh Chrome profiles; mobile Lighthouse default simulated throttling. Every category in every run must reach 90.",
+  "audited_at": "2026-11-05T15:43:04.748Z",
+  "threshold": 90,
+  "minimum": {
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "passed": true,
+  "runs": [
+    {
+      "run": 1,
+      "exit": 0,
+      "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+      "tool": "Lighthouse",
+      "version": "13.6.0",
+      "formFactor": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 797.487,
+        "lcp": 1084.487,
+        "cls": 0,
+        "tbt": 14
+      }
+    },
+    {
+      "run": 2,
+      "exit": 0,
+      "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+      "tool": "Lighthouse",
+      "version": "13.6.0",
+      "formFactor": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 770.184,
+        "lcp": 1057.184,
+        "cls": 0,
+        "tbt": 14
+      }
+    },
+    {
+      "run": 3,
+      "exit": 0,
+      "url": "https://brej-29.github.io/fraud-anomaly-lab/",
+      "tool": "Lighthouse",
+      "version": "13.6.0",
+      "formFactor": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 768.618,
+        "lcp": 1052.618,
+        "cls": 0,
+        "tbt": 14
+      }
+    }
+  ]
+}

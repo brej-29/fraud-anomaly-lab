@@ -1,6 +1,6 @@
 # Release and operating notes
 
-The default branch is `main`. `Publish` builds and browser-tests the static app, publishes GitHub Pages, then exercises the public URL with `npm run smoke`. `Workbench` and `Evidence` check pull requests. No cloud resources beyond the existing public repository and its Pages site are required.
+The default branch is `main`. `Publish` builds and browser-tests the static app, publishes GitHub Pages, then exercises the public URL with `npm run smoke` and three fresh-profile mobile Lighthouse audits. Every category in every audit must reach 90; the bounded result is retained as an artifact for seven days. `Workbench` and `Evidence` check pull requests. No cloud resources beyond the existing public repository and its Pages site are required.
 
 ## Local quality commands
 
