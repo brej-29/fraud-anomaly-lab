@@ -2,6 +2,8 @@
 
 The default branch is `main`. `Publish` builds and browser-tests the static app, publishes GitHub Pages, then exercises the public URL with `npm run smoke` and three fresh-profile mobile Lighthouse audits. Every category in every audit must reach 90; the bounded result is retained as an artifact for seven days. `Workbench` and `Evidence` check pull requests. No cloud resources beyond the existing public repository and its Pages site are required.
 
+Runners are pinned to Ubuntu 24.04. Their published [browser-equipped image](https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md) already provides Chrome's system libraries; workflows download the pinned Playwright browser without a redundant operating-system package update. Browser installation is bounded to three minutes and jobs to ten minutes. This replaced a stalled package-update step during release verification. The image manifest also announces a November 2026 default-Ubuntu transition, so the OS version is explicit.
+
 ## Local quality commands
 
 ```bash
