@@ -88,8 +88,8 @@ class LOFWrapper(BaseAnomalyModel):
     """
 
     def __init__(self, **kwargs: Any) -> None:
-        if not kwargs.get("novelty", True):
-            kwargs["novelty"] = True
+        # Ensure novelty detection is enabled by default so score_samples is available.
+        kwargs.setdefault("novelty", True)
         self.model = LocalOutlierFactor(**kwargs)
 
     def fit(self, X: np.ndarray) -> "LOFWrapper":
