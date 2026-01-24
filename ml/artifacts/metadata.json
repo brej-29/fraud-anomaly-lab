@@ -1,0 +1,200 @@
+{
+  "dataset": "mlg-ulb/creditcardfraud",
+  "raw_path": "data\\raw\\creditcard.csv",
+  "generated_at_utc": "2026-01-24T18:39:00.626742Z",
+  "feature_columns": [
+    "Time",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount"
+  ],
+  "splits": {
+    "train": 170884,
+    "val": 56961,
+    "test": 56962
+  },
+  "n_rows": 284807,
+  "n_fraud": 492,
+  "models": {
+    "isolation_forest": {
+      "type": "IsolationForestWrapper",
+      "hyperparameters": {
+        "bootstrap": false,
+        "contamination": "auto",
+        "max_features": 1.0,
+        "max_samples": "auto",
+        "n_estimators": 200,
+        "n_jobs": null,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "threshold": 0.5924442963399736,
+      "constraints_met": false,
+      "metrics": {
+        "val": {
+          "roc_auc": 0.9293913911025278,
+          "pr_auc": 0.020065441117413044,
+          "precision": 0.030015797788309637,
+          "recall": 0.3333333333333333,
+          "f1": 0.05507246376811594,
+          "tn": 56290,
+          "fp": 614,
+          "fn": 38,
+          "tp": 19
+        },
+        "test": {
+          "roc_auc": 0.943315930411752,
+          "pr_auc": 0.03541912758080426,
+          "precision": 0.04929577464788732,
+          "recall": 0.28,
+          "f1": 0.08383233532934131,
+          "tn": 56482,
+          "fp": 405,
+          "fn": 54,
+          "tp": 21
+        }
+      }
+    },
+    "lof": {
+      "type": "LOFWrapper",
+      "hyperparameters": {
+        "algorithm": "auto",
+        "contamination": "auto",
+        "leaf_size": 30,
+        "metric": "minkowski",
+        "metric_params": null,
+        "n_jobs": null,
+        "n_neighbors": 20,
+        "novelty": true,
+        "p": 2
+      },
+      "threshold": 0.9419254449186397,
+      "constraints_met": false,
+      "metrics": {
+        "val": {
+          "roc_auc": 0.6432400151933326,
+          "pr_auc": 0.002423477957698807,
+          "precision": 0.0010006846789908884,
+          "recall": 1.0,
+          "f1": 0.0019993686204356517,
+          "tn": 0,
+          "fp": 56904,
+          "fn": 0,
+          "tp": 57
+        },
+        "test": {
+          "roc_auc": 0.4895700833816748,
+          "pr_auc": 0.0013824988918731953,
+          "precision": 0.001316667251852112,
+          "recall": 1.0,
+          "f1": 0.002629871837579115,
+          "tn": 0,
+          "fp": 56887,
+          "fn": 0,
+          "tp": 75
+        }
+      }
+    },
+    "one_class_svm": {
+      "type": "OneClassSVMWrapper",
+      "hyperparameters": {
+        "cache_size": 200,
+        "coef0": 0.0,
+        "degree": 3,
+        "gamma": "scale",
+        "kernel": "rbf",
+        "max_iter": -1,
+        "nu": 0.01,
+        "shrinking": true,
+        "tol": 0.001,
+        "verbose": false
+      },
+      "threshold": 6.138918216787246,
+      "constraints_met": false,
+      "metrics": {
+        "val": {
+          "roc_auc": 0.9362952932732507,
+          "pr_auc": 0.059981743020385586,
+          "precision": 0.10064935064935066,
+          "recall": 0.543859649122807,
+          "f1": 0.16986301369863013,
+          "tn": 56627,
+          "fp": 277,
+          "fn": 26,
+          "tp": 31
+        },
+        "test": {
+          "roc_auc": 0.9472605926368649,
+          "pr_auc": 0.13031776096387188,
+          "precision": 0.20098039215686275,
+          "recall": 0.5466666666666666,
+          "f1": 0.2939068100358423,
+          "tn": 56724,
+          "fp": 163,
+          "fn": 34,
+          "tp": 41
+        }
+      }
+    },
+    "copod": {
+      "type": "COPODWrapper",
+      "hyperparameters": {
+        "contamination": 0.1,
+        "n_jobs": 1
+      },
+      "threshold": 93.31292128500351,
+      "constraints_met": false,
+      "metrics": {
+        "val": {
+          "roc_auc": 0.940437387930673,
+          "pr_auc": 0.05415218932507898,
+          "precision": 0.09090909090909091,
+          "recall": 0.3157894736842105,
+          "f1": 0.1411764705882353,
+          "tn": 56724,
+          "fp": 180,
+          "fn": 39,
+          "tp": 18
+        },
+        "test": {
+          "roc_auc": 0.9473991128611692,
+          "pr_auc": 0.1076412598128072,
+          "precision": 0.2028985507246377,
+          "recall": 0.37333333333333335,
+          "f1": 0.26291079812206575,
+          "tn": 56777,
+          "fp": 110,
+          "fn": 47,
+          "tp": 28
+        }
+      }
+    }
+  }
+}

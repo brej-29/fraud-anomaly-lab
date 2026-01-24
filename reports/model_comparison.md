@@ -1,83 +1,32 @@
 # Model Comparison Report
 
-This report summarizes the performance of the anomaly detection models trained on the **Credit Card Fraud Detection** dataset.
-
-> **Note**: This file is generated from `ml/artifacts/metadata.json` by `ml.evaluate.generate_model_comparison_report`.  
-> Run `make train` followed by `make report` to refresh the contents after retraining.
+This report was generated from `ml/artifacts/metadata.json`.
 
 ## 1. Overview
 
-- Dataset: Kaggle `mlg-ulb/creditcardfraud`.
-- Objective: Detect fraudulent credit card transactions (anomaly detection / binary classification).
-- Current models included in this step:
-  - Isolation Forest (sklearn)
-  - Local Outlier Factor (LOF, sklearn with `novelty=True`)
-  - One-Class SVM (sklearn)
-  - COPOD (PyOD)
-- Metrics:
-  - Primary: PR-AUC (Precision–Recall AUC)
-  - Secondary: ROC-AUC
-  - Threshold-based: Precision, Recall, F1, confusion matrices
+- Dataset: Kaggle `mlg-ulb/creditcardfraud`
+- Objective: Detect fraudulent credit card transactions via anomaly detection.
+- Metrics: PR-AUC (primary), ROC-AUC, and threshold-based precision, recall, and F1.
 
-## 2. Per-Model Metrics (Validation and Test)
+## 2. Per-Model Metrics
 
-After running the full pipeline, this section is populated with a table of metrics per model, per split (validation and test):
+| Model | Split | ROC-AUC | PR-AUC | Precision | Recall | F1 | Threshold | Constraints Met |
+|---|---|---|---|---|---|---|---|---|
+| isolation_forest | val | 0.9294 | 0.0201 | 0.0300 | 0.3333 | 0.0551 | 0.5924 | no |
+| isolation_forest | test | 0.9433 | 0.0354 | 0.0493 | 0.2800 | 0.0838 | 0.5924 | no |
+| lof | val | 0.6432 | 0.0024 | 0.0010 | 1.0000 | 0.0020 | 0.9419 | no |
+| lof | test | 0.4896 | 0.0014 | 0.0013 | 1.0000 | 0.0026 | 0.9419 | no |
+| one_class_svm | val | 0.9363 | 0.0600 | 0.1006 | 0.5439 | 0.1699 | 6.1389 | no |
+| one_class_svm | test | 0.9473 | 0.1303 | 0.2010 | 0.5467 | 0.2939 | 6.1389 | no |
+| copod | val | 0.9404 | 0.0542 | 0.0909 | 0.3158 | 0.1412 | 93.3129 | no |
+| copod | test | 0.9474 | 0.1076 | 0.2029 | 0.3733 | 0.2629 | 93.3129 | no |
 
-- ROC-AUC
-- PR-AUC
-- Precision
-- Recall
-- F1 score
-- Decision threshold on anomaly scores
-- Whether precision/recall constraints were satisfied during threshold calibration
+## 3. Notes
 
-The table is written automatically by `ml/evaluate.py` based on `metadata.json`.
+- Models are trained on **normal-only** transactions from the training split.
+- Splits are **time-based** (train: early, val/test: later) to reduce leakage.
+- Thresholds are calibrated on the validation set using precision and recall constraints.
 
-## 3. Threshold Selection and Trade-offs
+## 4. Best Model (Summary)
 
-Thresholds are calibrated on the **validation** split according to the strategy defined in `context/METRICS.md` and implemented in `ml.evaluate.choose_threshold`:
-
-- Prefer thresholds that satisfy **both**:
-  - Precision ≥ 0.90
-  - Recall ≥ 0.75
-- Among those, pick the threshold with the highest F1 score.
-- If no threshold satisfies both constraints, pick the threshold with the best F1 and mark that constraints were not met.
-
-This ensures a clear trade-off between catching fraud (recall) and controlling false alarms (precision).
-
-## 4. Notes on Training Setup
-
-- Models are trained using **normal-only** transactions from the training split.
-- Data is split using a **time-based 60/20/20** rule on the `Time` column:
-  - Train: earliest 60% of transactions
-  - Validation: next 20%
-  - Test: final 20%
-- Preprocessing:
-  - Robust scaling for `Amount` and `Time`
-  - PCA components (`V1`–`V28`) passed through unchanged
-
-## 5. Explainability and Insights
-
-Explainability in this project relies on:
-
-- A **supervised proxy model** (LogisticRegression with `class_weight="balanced"`) trained on labeled data.
-- **Permutation importance** on the validation set to identify influential transformed features (`Time`, `Amount`, `V1`–`V28`).
-- Careful communication that PCA components are not directly interpretable as original business features.
-
-Key findings and top influential components should be summarized here after analysis.
-
-## 6. Best Model and Next Steps
-
-Once metrics are populated:
-
-- Identify which model offers the best balance of PR-AUC, recall, and precision on both validation and test splits.
-- Document:
-  - The chosen model and operating threshold.
-  - Whether precision/recall constraints were met.
-  - Any notable weaknesses (e.g., sensitivity to particular feature distributions).
-
-Future steps (beyond this report):
-
-- Add additional models (e.g., autoencoder-based) and an ensemble.
-- Integrate metrics and explanations into the Streamlit dashboard and FastAPI API.
-- Extend monitoring to include data drift and performance drift in production.
+Refer to the table above to identify the model with the best balance of PR-AUC, recall, and precision on the validation and test sets.
