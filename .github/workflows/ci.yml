@@ -20,6 +20,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: test -x .githooks/commit-msg
       - run: npm run check:attribution
         env:
           SCAN_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
