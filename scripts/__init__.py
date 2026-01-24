@@ -1,0 +1,1 @@
+"""Scripts package for auxiliary command-line tools."""
