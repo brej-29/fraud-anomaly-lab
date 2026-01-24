@@ -12,11 +12,41 @@ This folder contains Jupyter notebooks used for exploratory data analysis (EDA),
 
 ## 01_eda_decisions.ipynb
 
-The `01_eda_decisions.ipynb` notebook is a **template** designed to:
+The `01_eda_decisions.ipynb` notebook provides a **full EDA and decisions walkthrough** for this project. It:
 
-- Frame the fraud detection problem and dataset specifics.
-- Explore class imbalance and temporal structure.
-- Plan leakage-safe splitting, preprocessing, model selection, metrics, and explainability.
-- Capture reproducibility choices (seeds, versions, environment details).
+- Frames the fraud detection problem and dataset specifics.
+- Explores class imbalance and temporal structure.
+- Implements and justifies a leakage-safe time-based split.
+- Examines feature distributions (Time, Amount, PCA components).
+- Trains a simple supervised proxy model for feature importance via permutation importance.
+- Captures reproducibility choices (seeds, versions, environment details).
+- Documents metric and thresholding choices, and what we plan to monitor in production.
 
-Fill in this template as one of the first steps once data is available locally in `data/raw/`.
+### How to run the notebook
+
+1. Ensure dependencies are installed:
+
+   ```bash
+   make setup
+   ```
+
+2. Download the Kaggle dataset (requires Kaggle API configuration as per `scripts/kaggle_setup.md`):
+
+   ```bash
+   make download-data
+   ```
+
+3. (Optional but recommended) Run preprocessing once to confirm the pipeline works:
+
+   ```bash
+   make preprocess
+   ```
+
+4. Launch your notebook environment from the project root (for example):
+
+   ```bash
+   jupyter notebook
+   ```
+
+5. Open `notebooks/01_eda_decisions.ipynb` and run all cells.  
+   The notebook assumes the raw dataset is available at `data/raw/creditcard.csv` and uses functions from `ml.preprocess` for consistency.

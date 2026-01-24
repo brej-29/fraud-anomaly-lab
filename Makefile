@@ -1,4 +1,4 @@
-.PHONY: setup test api dashboard compose-up compose-down download-data
+.PHONY: setup test api dashboard compose-up compose-down download-data preprocess train report e2e
 
 PYTHON ?= python
 
@@ -9,7 +9,7 @@ setup:
 	$(PYTHON) -m pip install -r dashboard/requirements.txt
 
 test:
-	pytest backend
+	pytest backend ml
 
 api:
 	uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
@@ -25,3 +25,14 @@ compose-down:
 
 download-data:
 	./scripts/download_kaggle.sh
+
+preprocess:
+	$(PYTHON) -m ml.preprocess --raw data/raw/creditcard.csv --out data/processed
+
+train:
+	$(PYTHON) -m ml.train_all
+
+report:
+	$(PYTHON) -m ml.evaluate --artifacts ml/artifacts --report reports/model_comparison.md
+
+e2e: download-data preprocess train report

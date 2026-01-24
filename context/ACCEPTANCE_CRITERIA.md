@@ -38,18 +38,34 @@ When implementing new features, update this checklist accordingly.
   - [x] `METRICS.md`
   - [x] `COSINE_GROUNDING_TEMPLATE.md`
   - [x] `ACCEPTANCE_CRITERIA.md` (this file)
+- [x] EDA notebook implemented as a full, runnable analysis using the real dataset, including:
+  - [x] Class imbalance exploration.
+  - [x] Time-based split rationale and visualization.
+  - [x] Feature distribution plots and correlation heatmap.
+  - [x] Supervised proxy model with permutation importance.
+  - [x] Metric and monitoring rationale aligned with `context/METRICS.md`.
 
 ---
 
-## 3. ML Pipeline (Placeholders)
+## 3. ML Pipeline
 
-- [x] `ml/preprocess.py` with placeholder but structured functions.
-- [x] `ml/train_all.py` with placeholder training orchestrator.
-- [x] `ml/evaluate.py` with placeholder evaluation logic.
+- [x] `ml/preprocess.py` with structured functions.
+- [x] `ml/train_all.py` with training orchestrator.
+- [x] `ml/evaluate.py` with evaluation and reporting utilities.
 - [x] `ml/ensemble.py` with placeholder ensemble interface.
 - [x] `ml/requirements.txt` listing core dependencies (`pandas`, `numpy`, `scikit-learn`, `pyod`, `joblib`).
-- [ ] Implement full preprocessing (including time-based split and scaling).
-- [ ] Train six models and persist artifacts.
+- [x] Implement full preprocessing (including time-based split and scaling) with:
+  - [x] Schema validation and binary target checks.
+  - [x] Time-based 60/20/20 split by `Time`.
+  - [x] RobustScaler-based preprocessing pipeline for `Amount` and `Time`.
+  - [x] Processed data cache in `data/processed/` with CLI entrypoint.
+- [x] Implement training and evaluation for the first four anomaly models (IsolationForest, LOF, OneClassSVM, COPOD), including:
+  - [x] Standardized anomaly scoring interface (higher = more anomalous).
+  - [x] Training on normal-only training data.
+  - [x] Threshold calibration on validation scores using precision/recall constraints.
+  - [x] Metrics computation on validation and test sets.
+  - [x] Artifact export (models, preprocessor, thresholds, metadata) under `ml/artifacts/`.
+- [ ] Train six models and persist artifacts (remaining models and ensemble to be implemented in later steps).
 - [ ] Implement ensemble logic and store configuration/metadata.
 
 ---
@@ -88,8 +104,8 @@ When implementing new features, update this checklist accordingly.
 ## 6. Reporting and Explainability
 
 - [x] `reports/model_comparison.md` template created.
-- [ ] Populate comparison report with model metrics (PR-AUC, ROC-AUC, etc.).
-- [ ] Implement feature importance / explainability analysis (per `notebooks/01_eda_decisions.ipynb` plan).
+- [x] Model comparison report generation wired to training artifacts (`ml/evaluate.generate_model_comparison_report`).
+- [x] Implement feature importance / explainability analysis in EDA notebook using a supervised proxy model and permutation importance.
 - [ ] Surface key results in dashboard and/or API.
 
 ---

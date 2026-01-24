@@ -20,4 +20,10 @@ for f in "${DATA_DIR}"/*.zip; do
   unzip -o "$f" -d "${DATA_DIR}"
 done
 
-echo "Done. Verify that the CSV file is present in ${DATA_DIR}."
+if [ ! -f "${DATA_DIR}/creditcard.csv" ]; then
+  echo "ERROR: Expected creditcard.csv not found in ${DATA_DIR} after download." >&2
+  echo "Please check your Kaggle configuration or download the dataset manually." >&2
+  exit 1
+fi
+
+echo "Download complete. Found creditcard.csv in ${DATA_DIR}."

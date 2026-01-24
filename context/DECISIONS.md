@@ -48,18 +48,27 @@ This aligns with our goals:
 - Rationale:
   - Mirrors realistic deployment where models trained on past data are applied to future transactions.
   - Reduces the risk of temporal **data leakage** (information from the future bleeding into the past).
-- Implementation details will be fleshed out in:
-  - `notebooks/01_eda_decisions.ipynb`
-  - `ml/preprocess.py`
+- Concrete implementation:
+  - Sort all rows by `Time` ascending.
+  - Use a **60/20/20** split on the sorted data:
+    - Train: earliest 60% of transactions.
+    - Validation: next 20%.
+    - Test: final 20%.
+  - Implemented in:
+    - `ml/preprocess.py` (`time_based_split`),
+    - and reused in `notebooks/01_eda_decisions.ipynb` for analysis and visualization.
 
 ---
 
 ## Preprocessing Choices (Initial)
 
-- Scale `Amount` and potentially `Time` using a robust scaler (e.g., `StandardScaler` or `RobustScaler`).
+- Scale `Amount` and `Time` using a **RobustScaler** to reduce sensitivity to outliers.
 - Keep `V1`–`V28` as-is (already PCA-transformed numeric features).
+- Implement preprocessing as a reusable **sklearn Pipeline** (see `ml/preprocess.build_preprocessor`), so:
+  - The same transformation is used for training, evaluation, and (later) API inference.
+  - The fitted preprocessor can be serialized and loaded alongside model artifacts.
 - Handle class imbalance primarily via:
-  - Threshold selection.
+  - Threshold selection on anomaly scores.
   - Model choice.
   - Metric optimization (e.g., PR-AUC, recall at fixed precision), rather than heavy rebalancing techniques at first.
 
@@ -78,6 +87,23 @@ Further adjustments (e.g., SMOTE, class weights) may be considered after baselin
 - **Single monorepo**:
   - Easier local development with shared utilities.
   - Easier to keep ML, API, and dashboard in sync.
+- **Shared ML utilities**:
+  - `ml/preprocess.py` centralizes loading, validation, time-based splitting, and scaling.
+  - `ml/models.py` standardizes anomaly model interfaces and score direction (higher = more anomalous).
+  - `ml/evaluate.py` centralizes threshold calibration and metric computation, ensuring consistency across models.
+
+---
+
+## Feature Importance and Explainability Strategy
+
+- Use a **supervised proxy model** (e.g., `LogisticRegression` with `class_weight=\"balanced\"`) on the time-based train/validation splits to derive feature importance.
+- Apply **permutation importance** on the validation split (see `notebooks/01_eda_decisions.ipynb`) to understand which transformed features (Time, Amount, V1–V28) drive predictive performance.
+- Clearly communicate limitations:
+  - PCA components are not directly interpretable as original features.
+  - Importance rankings are useful for monitoring and sanity checks, not for direct causal claims.
+- Record findings in:
+  - `notebooks/01_eda_decisions.ipynb` (EDA details),
+  - `reports/model_comparison.md` (high-level narrative once models are trained).
 
 ---
 

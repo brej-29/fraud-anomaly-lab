@@ -18,9 +18,13 @@ Key deliverables:
 ```bash
 make setup           # install backend + ml + dashboard dependencies into your environment
 make download-data   # download Kaggle data into data/raw (requires Kaggle API setup)
+make preprocess      # run time-based split + preprocessing, cache splits under data/processed
+make train           # train 4 anomaly models (IsolationForest, LOF, One-Class SVM, COPOD) and export artifacts
+make report          # generate reports/model_comparison.md from training metadata
 make api             # run FastAPI dev server on http://localhost:8000
 make dashboard       # run Streamlit app on http://localhost:8501
-make test            # run backend tests (pytest)
+make test            # run backend + ml tests (pytest)
+make e2e             # run download-data -> preprocess -> train -> report
 ```
 
 ## Repo Map (high level)
