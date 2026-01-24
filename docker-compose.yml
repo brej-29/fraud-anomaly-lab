@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: fraud-anomaly-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    networks:
+      - fraud-net
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    container_name: fraud-anomaly-dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - DASHBOARD_API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - fraud-net
+
+networks:
+  fraud-net:
+    driver: bridge

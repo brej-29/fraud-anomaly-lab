@@ -1,0 +1,1 @@
+"""Backend FastAPI application package for fraud-anomaly-lab."""
