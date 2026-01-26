@@ -28,7 +28,7 @@ jobs:
 
       - name: Lint with ruff
         run: |
-          ruff backend ml shared
+          ruff check backend ml shared
 
       - name: Run backend tests
         run: |

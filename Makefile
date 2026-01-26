@@ -14,7 +14,7 @@ test:
 	pytest ml -m "not tf_heavy"
 
 lint:
-	ruff backend ml shared
+	ruff check backend ml shared
 
 api:
 	uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload

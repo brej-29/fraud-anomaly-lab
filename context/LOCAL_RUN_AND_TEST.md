@@ -392,7 +392,7 @@ make lint
 Without Make:
 
 ```bash
-ruff backend ml shared
+ruff check backend ml shared
 ```
 
 ---
