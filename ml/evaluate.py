@@ -190,7 +190,7 @@ def generate_model_comparison_report(
     lines.append("")
     lines.append("## 1. Overview")
     lines.append("")
-    lines.append(f"- Dataset: Kaggle `mlg-ulb/creditcardfraud`")
+    lines.append("- Dataset: Kaggle `mlg-ulb/creditcardfraud`")
     lines.append("- Objective: Detect fraudulent credit card transactions via anomaly detection.")
     lines.append(
         "- Metrics: PR-AUC (primary), ROC-AUC, and threshold-based precision, recall, and F1."

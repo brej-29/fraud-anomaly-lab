@@ -26,6 +26,8 @@ This report was generated from `ml/artifacts/metadata.json`.
 - Models are trained on **normal-only** transactions from the training split.
 - Splits are **time-based** (train: early, val/test: later) to reduce leakage.
 - Thresholds are calibrated on the validation set using precision and recall constraints.
+- This example table was generated before the autoencoder and ensemble were added; after rerunning
+  `make train-all` and `make report` you will see rows for the autoencoder and the score-based ensemble as well.
 
 ## 4. Best Model (Summary)
 

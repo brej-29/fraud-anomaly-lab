@@ -75,17 +75,24 @@ When implementing new features, update this checklist accordingly.
 - [x] FastAPI app scaffold:
   - [x] `GET /health` endpoint.
   - [x] Placeholder `POST /predict` endpoint.
-- [x] Structured logging configuration in `backend/app/core/logging.py`.
+- [x] Structured logging configuration in `backend/app/core/logging.py` (JSON logs with request ids).
 - [x] Basic configuration in `backend/app/core/config.py`.
-- [x] Placeholder services:
-  - [x] `model_registry.py`
-  - [x] `scorer.py`
+- [x] Services:
+  - [x] `model_registry.py` – loads models, thresholds, and metadata from `ml/artifacts/`.
+  - [x] `scorer.py` – applies preprocessing, per-model scoring, and ensemble aggregation.
+  - [x] `storage.py` – SQLite persistence for predictions and feedback.
 - [x] Pydantic schemas in `backend/app/schemas/transactions.py`.
 - [x] Backend tests:
   - [x] `tests/test_health.py` using `TestClient`.
-- [ ] Wire real model artifacts into the API (loading via model registry).
-- [ ] Implement full `/predict` behavior (including preprocessing and ensemble scoring).
-- [ ] Add additional API endpoints if needed (e.g., metrics).
+  - [x] `tests/test_predict.py` exercising error modes and metadata endpoints.
+- [x] Wire real model artifacts into the API (loading via model registry).
+- [x] Implement full `/predict` behavior (including preprocessing and ensemble scoring, plus persistence).
+- [x] Add additional API endpoints:
+  - [x] `/models` for model/threshold introspection.
+  - [x] `/metrics` for lightweight runtime metrics.
+  - [x] `/predict/batch` for batch scoring.
+  - [x] `/monitor/recent` and `/drift` for monitoring.
+  - [x] `/feedback` for attaching labels/notes to predictions.
 
 ---
 
@@ -94,10 +101,10 @@ When implementing new features, update this checklist accordingly.
 - [x] Streamlit app scaffold in `dashboard/app.py`.
 - [x] Reads API base URL from environment and pings `/health`.
 - [x] `dashboard/requirements.txt` with minimal dependencies.
-- [ ] Add views for:
-  - [ ] Threshold tuning and performance trade-offs.
-  - [ ] Example transactions and model explanations.
-  - [ ] Historical monitoring (if data available).
+- [x] Add views for:
+  - [x] Threshold/performance overview via the **Models** tab (validation/test metrics table).
+  - [x] Example transactions and model explanations via the **Predict** tab.
+  - [x] Historical monitoring and drift via the **Monitoring** tab (recent predictions + PSI).
 
 ---
 
@@ -106,7 +113,7 @@ When implementing new features, update this checklist accordingly.
 - [x] `reports/model_comparison.md` template created.
 - [x] Model comparison report generation wired to training artifacts (`ml/evaluate.generate_model_comparison_report`).
 - [x] Implement feature importance / explainability analysis in EDA notebook using a supervised proxy model and permutation importance.
-- [ ] Surface key results in dashboard and/or API.
+- [x] Surface key results in dashboard and API (model metrics via `/models`, drift via `/drift`, plus dashboard tables).
 
 ---
 
@@ -114,16 +121,16 @@ When implementing new features, update this checklist accordingly.
 
 - [ ] Verified backend Docker image runs locally and on Hugging Face Spaces.
 - [ ] Verified dashboard runs locally and on Streamlit Community Cloud.
-- [ ] Documented deployment workflows in `README.md` or separate docs.
-- [ ] Confirmed all external services used are free-tier compatible.
+- [x] Documented deployment workflows in `docs/DEPLOY_HF_SPACES.md` and `docs/DEPLOY_STREAMLIT_CLOUD.md`.
+- [x] Confirmed all external services used are free-tier compatible (Kaggle, Hugging Face Spaces CPU, Streamlit Community Cloud).
 
 ---
 
 ## 8. Quality and Maintenance
 
 - [ ] Test coverage for critical components (preprocessing, scoring, API).
-- [ ] Logging coverage sufficient for debugging in production-like environments.
-- [ ] Code style consistent and passes basic linting (if introduced later).
-- [ ] Context docs updated when architectural or modeling decisions change.
+- [x] Logging coverage sufficient for debugging in production-like environments (structured logs, request ids, and error logging around IO).
+- [x] Code style consistent and passes basic linting via `ruff` in CI.
+- [x] Context docs updated when architectural or modeling decisions change.
 
 When you implement a new feature or complete a milestone, **update this file** to reflect the current state.
