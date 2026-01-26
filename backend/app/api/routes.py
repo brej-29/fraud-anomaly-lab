@@ -21,22 +21,33 @@ router = APIRouter()
 
 
 def _get_registry(request: Request) -> ModelRegistry:
+    """
+    Retrieve a ModelRegistry instance from app state, lazily initializing it if needed.
+
+    This ensures that endpoints like /models and /drift remain available even when
+    the process was started without a prior startup hook (e.g., in tests).
+    """
     registry = getattr(request.app.state, "model_registry", None)
     if registry is None:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Model registry is not initialized.",
-        )
+        registry = ModelRegistry()
+        registry.load_all()
+        request.app.state.model_registry = registry
     return registry
 
 
 def _get_scorer(request: Request) -> Scorer:
+    """
+    Retrieve a Scorer instance from app state, lazily initializing it if needed.
+
+    When artifacts are missing or incomplete, the Scorer's own _ensure_ready()
+    will raise a RuntimeError, which the prediction endpoints translate into
+    a 503 with a clear error message ("Model artifacts not available ...").
+    """
     scorer = getattr(request.app.state, "scorer", None)
     if scorer is None:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Scoring service is not initialized.",
-        )
+        registry = _get_registry(request)
+        scorer = Scorer(registry=registry)
+        request.app.state.scorer = scorer
     return scorer
 
 
