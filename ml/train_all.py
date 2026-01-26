@@ -10,8 +10,10 @@ import numpy as np
 
 from shared.utils import log_info, set_global_seed
 
+from .ensemble import ScoreEnsemble
 from .evaluate import choose_threshold, compute_metrics
 from .models import (
+    AutoencoderWrapper,
     BaseAnomalyModel,
     COPODWrapper,
     IsolationForestWrapper,
@@ -44,6 +46,15 @@ def _build_models() -> Dict[str, BaseAnomalyModel]:
             nu=0.01,
         ),
         "copod": COPODWrapper(),
+        "autoencoder": AutoencoderWrapper(
+            hidden_units=[64, 32],
+            learning_rate=1e-3,
+            batch_size=256,
+            epochs=50,
+            validation_split=0.1,
+            patience=5,
+            seed=42,
+        ),
     }
     return models
 
@@ -86,7 +97,9 @@ def train_all_models() -> None:
     - Fit models on normal-only training data.
     - Calibrate thresholds on validation scores using precision/recall constraints.
     - Evaluate on test set.
-    - Persist models, preprocessor, thresholds, and metadata under ml/artifacts/.
+    - Build a score-based ensemble over all base models.
+    - Persist models, ensemble configuration, preprocessor, thresholds, and metadata
+      under ml/artifacts/.
     """
     if not RAW_DATA_PATH.exists():
         log_info(
@@ -107,16 +120,36 @@ def train_all_models() -> None:
         log_info("No normal samples found in training data; cannot train anomaly models.")
         return
 
+    run_timestamp = datetime.utcnow().isoformat() + "Z"
+
     models = _build_models()
     thresholds: Dict[str, float] = {}
     models_summary: Dict[str, Any] = {}
+    per_model_scores_val: Dict[str, np.ndarray] = {}
+    per_model_scores_test: Dict[str, np.ndarray] = {}
+    normalization_params: Dict[str, Dict[str, float]] = {}
 
     for name, model in models.items():
         log_info("Training model: %s", name)
         model.fit(split_data.X_train_normal)
 
+        # Score all splits for this model.
+        scores_train = model.score_samples(split_data.X_train)
         scores_val = model.score_samples(split_data.X_val)
         scores_test = model.score_samples(split_data.X_test)
+
+        # Store raw scores for later ensemble computation.
+        per_model_scores_val[name] = scores_val
+        per_model_scores_test[name] = scores_test
+
+        # Normalization parameters derived from the training split.
+        score_min_train = float(scores_train.min())
+        score_max_train = float(scores_train.max())
+        normalization_params[name] = {
+            "method": "min_max",
+            "score_min_train": score_min_train,
+            "score_max_train": score_max_train,
+        }
 
         calibration = choose_threshold(scores_val, split_data.y_val)
         threshold = float(calibration["threshold"])
@@ -134,6 +167,12 @@ def train_all_models() -> None:
         except Exception:  # noqa: BLE001
             params = {}
 
+        model_path = (
+            ARTIFACTS_DIR / "autoencoder.keras"
+            if name == "autoencoder"
+            else ARTIFACTS_DIR / f"{name}.joblib"
+        )
+
         models_summary[name] = {
             "type": model.__class__.__name__,
             "hyperparameters": params,
@@ -143,15 +182,71 @@ def train_all_models() -> None:
                 "val": metrics_val,
                 "test": metrics_test,
             },
+            "normalization": normalization_params[name],
+            "artifact_path": str(model_path),
+            "trained_at_utc": run_timestamp,
         }
 
-        model_path = ARTIFACTS_DIR / f"{name}.joblib"
         model.save(model_path)
+
+    # Build score-based ensemble over all base models (including the autoencoder).
+    base_model_names = list(models.keys())
+    ensemble = ScoreEnsemble(
+        base_models=base_model_names,
+        normalization_params=normalization_params,
+        method="min_max",
+    )
+
+    ensemble_scores_val = ensemble.combine(per_model_scores_val)
+    ensemble_scores_test = ensemble.combine(per_model_scores_test)
+
+    ensemble_calibration = choose_threshold(ensemble_scores_val, split_data.y_val)
+    ensemble_threshold = float(ensemble_calibration["threshold"])
+    thresholds["ensemble"] = ensemble_threshold
+
+    y_val_pred_ens = (ensemble_scores_val >= ensemble_threshold).astype(int)
+    y_test_pred_ens = (ensemble_scores_test >= ensemble_threshold).astype(int)
+
+    metrics_val_ens = ensemble_calibration["metrics"]
+    metrics_test_ens = compute_metrics(
+        split_data.y_test,
+        y_test_pred_ens,
+        ensemble_scores_test,
+    )
+
+    # Baseline distribution for drift monitoring (validation ensemble scores).
+    hist_counts, bin_edges = np.histogram(ensemble_scores_val, bins=10)
+    baseline = {
+        "histogram": {
+            "bin_edges": bin_edges.tolist(),
+            "counts": [int(c) for c in hist_counts.tolist()],
+        },
+        "n_samples": int(ensemble_scores_val.shape[0]),
+        "source_split": "val",
+        "method": "ensemble_score",
+    }
+
+    models_summary["ensemble"] = {
+        "type": "ScoreEnsemble",
+        "base_models": base_model_names,
+        "threshold": ensemble_threshold,
+        "constraints_met": ensemble_calibration["constraints_met"],
+        "metrics": {
+            "val": metrics_val_ens,
+            "test": metrics_test_ens,
+        },
+        "normalization": {
+            "method": "min_max",
+            "per_model": normalization_params,
+        },
+        "baseline": baseline,
+        "trained_at_utc": run_timestamp,
+    }
 
     metadata_out: Dict[str, Any] = {
         "dataset": "mlg-ulb/creditcardfraud",
         "raw_path": str(RAW_DATA_PATH),
-        "generated_at_utc": datetime.utcnow().isoformat() + "Z",
+        "generated_at_utc": run_timestamp,
         "feature_columns": split_data.feature_columns,
         "splits": metadata.get("splits", {}),
         "n_rows": metadata.get("n_rows"),
@@ -163,7 +258,10 @@ def train_all_models() -> None:
     _save_thresholds(thresholds, ARTIFACTS_DIR / "thresholds.json")
     _save_metadata(metadata_out, ARTIFACTS_DIR / "metadata.json")
 
-    log_info("Training complete for models: %s", ", ".join(models.keys()))
+    log_info(
+        "Training complete for models (including ensemble): %s",
+        ", ".join(models_summary.keys()),
+    )
     log_info("Next step: run `make report` to generate the model comparison report.")
     log_info("Artifacts directory: %s", ARTIFACTS_DIR)
 

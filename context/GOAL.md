@@ -54,7 +54,7 @@ Primary objectives:
     - **Precision (fraud)**: >= 0.10 (starting point, to be refined with business context).
 - **Operational quality**
   - API health endpoint always available.
-  - Latency suitable for real-time per-transaction scoring on CPU (e.g., &lt; 50 ms per transaction for typical models).
+  - Latency suitable for real-time per-transaction scoring on CPU (e.g., < 50 ms per transaction for typical models).
 
 These targets are **aspirational** and will be revisited as we run baselines.
 
