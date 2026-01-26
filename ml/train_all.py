@@ -155,7 +155,6 @@ def train_all_models() -> None:
         threshold = float(calibration["threshold"])
         thresholds[name] = threshold
 
-        y_val_pred = (scores_val >= threshold).astype(int)
         y_test_pred = (scores_test >= threshold).astype(int)
 
         metrics_val = calibration["metrics"]
@@ -204,7 +203,6 @@ def train_all_models() -> None:
     ensemble_threshold = float(ensemble_calibration["threshold"])
     thresholds["ensemble"] = ensemble_threshold
 
-    y_val_pred_ens = (ensemble_scores_val >= ensemble_threshold).astype(int)
     y_test_pred_ens = (ensemble_scores_test >= ensemble_threshold).astype(int)
 
     metrics_val_ens = ensemble_calibration["metrics"]

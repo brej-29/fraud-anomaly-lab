@@ -22,4 +22,4 @@ respects this via:
 ```bash
 uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}
 ```
-"""ackend package root for fraud-anomaly-lab."""
+"""
