@@ -142,6 +142,6 @@ class ModelRegistry:
         """
         try:
             return self._models[name]
-        except KeyError as exc:
+        except KeyError:
             logger.error("Requested model '%s' not found in registry.", name)
             raise
