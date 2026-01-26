@@ -133,7 +133,7 @@ class BatchPredictionRequest(BaseModel):
         description="List of feature rows [Time, Amount, V1, ..., V28].",
     )
 
-    @root_validator
+    @root_validator(skip_on_failure=True)
     def _check_input(cls, values: Dict[str, Any]) -> Dict[str, Any]:
         tx, rows = values.get("transactions"), values.get("rows")
         if tx is None and rows is None:
